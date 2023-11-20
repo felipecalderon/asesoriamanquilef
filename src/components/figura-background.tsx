@@ -1,0 +1,82 @@
+'use client'
+import { CSSProperties, useEffect, useState } from "react"
+
+function throttle<T extends (...args: any[]) => any>(func: T, limit: number): (...args: Parameters<T>) => void {
+  let lastFunc: number | undefined;
+  let lastRan: number | undefined;
+
+  return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
+    const context = this;
+    if (!lastRan) {
+      func.apply(context, args);
+      lastRan = Date.now();
+    } else {
+      if (lastFunc) clearTimeout(lastFunc);
+      lastFunc = window.setTimeout(() => {
+        if ((Date.now() - lastRan!) >= limit) {
+          func.apply(context, args);
+          lastRan = Date.now();
+        }
+      }, limit - (Date.now() - lastRan));
+    }
+  };
+}
+
+const BGFigura = () => {
+  const [puntoMouse, setMouse] = useState({
+    x: 0,
+    y: 0
+  });
+
+  // Calcula el valor de translateX basado en el valor de 'point'
+  const translate1: CSSProperties = {
+    transform: `translateX(${puntoMouse.x}px) translateY(${puntoMouse.y}px)`,
+    transition: '0.1s'
+  };
+
+  const translate2: CSSProperties = {
+    transform: `translateX(${puntoMouse.x * 2}px) translateY(${puntoMouse.y * 3}px)`,
+    transition: '0.1s'
+  };
+
+  useEffect(() => {
+    let animationFrameId: number;
+
+    const handleMouseMove = throttle((event: MouseEvent) => {
+      const { clientX, clientY } = event;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const x = (centerX - clientX)/5;
+      const y = (centerY - clientY)/5;
+
+      // Planificar una actualización del estado
+      animationFrameId = requestAnimationFrame(() => {
+        setMouse({ x, y });
+      });
+    }, 33); 
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, []);
+
+  return (
+      <div className={`fixed inset-0 pointer-events-none flex justify-center items-center`}>
+        <div
+          className={`w-20 h-20 ml-20 md:w-60 md:h-60 bg-purple-500 opacity-20 blur-3xl rounded-full`}
+          style={translate1}
+        />
+        <div
+          className={`w-40 h-40 md:w-96 md:h-96 bg-fuchsia-500 opacity-20 blur-3xl rounded-full`}
+          style={translate2}
+        />
+      </div>
+  );
+}
+
+export default BGFigura;
