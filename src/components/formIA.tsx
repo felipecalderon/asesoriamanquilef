@@ -47,7 +47,7 @@ const FormIA = () => {
         </form>
     </div>
     { respIA && 
-    <p className="px-20 text-lg w-full text-center font-medium italic">{ respIA }</p>
+    <p className="px-6 md:px-20 text-lg w-full text-center font-medium italic">{ respIA }</p>
     }
     </>
     )
