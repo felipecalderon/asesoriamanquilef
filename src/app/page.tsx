@@ -8,7 +8,7 @@ export default function Home() {
     <div className="h-screen">
       <div className="z-50 relative">
         <Header />
-        <Titulo message="Este título se ve bacan"/>
+        <Titulo message="Asesoría Jurídica Manquilef"/>
         <div className="w-1/3 mx-auto">
         <FormIA />
         </div>

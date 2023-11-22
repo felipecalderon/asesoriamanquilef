@@ -68,11 +68,11 @@ const BGFigura = () => {
   return (
       <div className={`fixed inset-0 pointer-events-none flex justify-center items-center`}>
         <div
-          className={`w-20 h-20 ml-20 md:w-60 md:h-60 bg-purple-500 opacity-20 blur-3xl rounded-full`}
+          className={`w-20 h-20 ml-20 md:w-60 md:h-60 bg-violet-500 opacity-20 blur-3xl rounded-full`}
           style={translate1}
         />
         <div
-          className={`w-40 h-40 md:w-96 md:h-96 bg-fuchsia-500 opacity-20 blur-3xl rounded-full`}
+          className={`w-40 h-40 md:w-96 md:h-96 bg-violet-500 opacity-20 blur-3xl rounded-full`}
           style={translate2}
         />
       </div>
