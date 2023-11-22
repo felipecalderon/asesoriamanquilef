@@ -9,9 +9,7 @@ export default function Home() {
       <div className="z-50 relative">
         <Header />
         <Titulo message="Asesoría Jurídica Manquilef"/>
-        <div className="w-1/3 mx-auto">
         <FormIA />
-        </div>
       </div>
       <div className="z-10 relative">
         <BGFigura />

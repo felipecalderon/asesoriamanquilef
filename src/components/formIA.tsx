@@ -27,23 +27,29 @@ const FormIA = () => {
         }
     }
     return (
+    <>        
+    <div className="w-2/3 md:1/3 mx-auto">
         <form className="space-y-8 py-6" onSubmit={consultarIA}>
             <div>
-                <label htmlFor="consulta" className="block mb-2 text-center text-sm font-medium text-gray-900 dark:text-gray-300">Ingresa algo</label>
+                <label htmlFor="consulta" className="block mb-2 text-center text-sm font-medium text-gray-600 dark:text-gray-300">Consulta online sin costo (tienes 3 consultas disponibles)</label>
                 <input 
                     onChange={(e) => setQ(e.target.value)}
                     value={query}
                     type="text" 
-                    id="consulta" 
-                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Ingresa tu consulta" required />
+                    id="consulta"
+                    placeholder="Ej. ¿Puedo dejarle testamento a mis mascotas?" 
+                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" />
             </div>
-            {respIA && <p className="text-xl text-center font-semibold italic">{respIA}</p>}
             {loading && <div className="inline-flex gap-4 items-center">
                 <VscLoading className='text-4xl animate-spin' />
                 <p className="text-lg text-left font-semibold italic">Cargando...</p>
             </div>}
-
         </form>
+    </div>
+    { respIA && 
+    <p className="px-20 text-lg w-full text-center font-medium italic">{ respIA }</p>
+    }
+    </>
     )
 }
 
