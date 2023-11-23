@@ -28,7 +28,7 @@ const FormIA = () => {
     }
     return (
     <>        
-    <div className="w-2/3 md:1/3 mx-auto">
+    <div className="w-3/4 md:1/3 mx-auto">
         <form className="space-y-8 py-6" onSubmit={consultarIA}>
             <div>
                 <label htmlFor="consulta" className="block mb-2 text-center text-sm font-medium text-gray-600 dark:text-gray-300">Consulta online sin costo (tienes 3 consultas disponibles)</label>

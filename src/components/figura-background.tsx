@@ -27,6 +27,7 @@ const BGFigura = () => {
     x: 0,
     y: 0
   });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 }); 
 
   // Calcula el valor de translateX basado en el valor de 'point'
   const translate1: CSSProperties = {
@@ -39,6 +40,11 @@ const BGFigura = () => {
     transition: '0.1s'
   };
 
+  const translate3: CSSProperties = {
+    transform: `translateX(${mousePosition.x}px) translateY(${mousePosition.y}px)`,
+    transition: '0.1s'
+  };
+
   useEffect(() => {
     let animationFrameId: number;
 
@@ -46,13 +52,14 @@ const BGFigura = () => {
       const { clientX, clientY } = event;
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
-      const x = (centerX - clientX)/5;
-      const y = (centerY - clientY)/5;
+      const x = (centerX - clientX) / 5;
+      const y = (centerY - clientY) / 5;
 
       // Planificar una actualización del estado
       animationFrameId = requestAnimationFrame(() => {
         setMouse({ x, y });
       });
+      setMousePosition({ x: clientX, y: clientY });
     }, 33); 
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -68,12 +75,16 @@ const BGFigura = () => {
   return (
       <div className={`fixed inset-0 pointer-events-none flex justify-center items-center`}>
         <div
-          className={`w-20 h-20 ml-20 md:w-60 md:h-60 bg-violet-500 opacity-20 blur-3xl rounded-full`}
+          className={`w-20 h-20 ml-30 md:w-60 md:h-60 bg-violet-500 opacity-20 blur-3xl rounded-full`}
           style={translate1}
         />
         <div
-          className={`w-40 h-40 md:w-96 md:h-96 bg-violet-500 opacity-20 blur-3xl rounded-full`}
+          className={`w-40 h-40 md:w-96 md:h-96 bg-violet-400 opacity-20 blur-3xl rounded-full`}
           style={translate2}
+        />
+        <div
+          className={`w-96 h-96 mr-96 bg-red-200 opacity-20 blur-3xl rounded-full`}
+          style={translate3}
         />
       </div>
   );
