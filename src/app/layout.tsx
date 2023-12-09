@@ -7,11 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Asesoría Manquilef',
   description: 'Barbara Manquilef - Abogada en Temuco, asesorías legales.',
-  manifest: '/manifest.json',
-  icons: {
-    apple: '/images/icons/icon-512x512.png'
-  },
-
+  manifest: '/manifest.json'
 }
 
 export default function RootLayout({
@@ -22,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="es_ES" className={inter.className}>
       <head>
-        <link rel="icon" href="/favicon-white.png" sizes="any" />
+        <link rel="icon" href="/favicon.png" />
       </head>
       <body className='bg-violet-100 dark:bg-violet-900'>{children}</body>
     </html>

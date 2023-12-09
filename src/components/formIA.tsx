@@ -3,8 +3,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react"
 import { VscLoading } from "react-icons/vsc";
-import { Ephesis, MonteCarlo } from 'next/font/google'
-const fuente = MonteCarlo({ subsets: ["latin"], weight: '400' })
+import { fetchData } from "@/utils/fetchs";
 
 const FormIA = () => {
     const [respIA, setResIA] = useState<string | null>(null)
@@ -17,12 +16,13 @@ const FormIA = () => {
         e.preventDefault()
         try {
             setLoading(true)
-            const response = await fetch(`https://asesoriamanquilef-back-production.up.railway.app/`, {
+            const url = 'https://asesoriamanquilef-back-production.up.railway.app/';
+            const options: OptionsFetch = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ query })
-            });
-            const data = await response.json();
+                body: JSON.stringify({query})
+            };
+            const data = await fetchData(url, options)
             setLoading(false)
             setResIA(data.content);
             setQ('')
@@ -56,7 +56,8 @@ const FormIA = () => {
             <div className="w-3/4 md:1/3 mx-auto">
                 <form className="space-y-8 py-6" onSubmit={consultarIA}>
                     <div>
-                        <label htmlFor="consulta" className="block mb-2 text-center text-sm font-medium text-gray-600 dark:text-gray-300">Consulta online sin costo (tienes 3 consultas disponibles)</label>
+                        <label htmlFor="consulta" className="block mb-2 text-center text-sm font-medium text-gray-600 dark:text-gray-300">Consulta online sin costo <br />
+                        <span className="italic">(tienes 3 consultas disponibles)</span></label>
                         <input
                             onChange={(e) => setQ(e.target.value)}
                             value={query}
@@ -74,8 +75,8 @@ const FormIA = () => {
             </div>
             {respIA &&
                 <div className="flex flex-col items-center">
-                    <Image src={'/escribiendo.avif'} alt='escribiendo' width={50} height={50} />
-                    <p className={`${fuente.className} px-6 pt-3 pb-9 md:px-20 overflow-hidden text-4xl w-full text-center font-medium italic dark:text-white`}>
+                    {respIA !== animatedText && <Image src={'/escribiendo.avif'} alt='escribiendo' width={50} height={50} />}
+                    <p className={`px-6 pt-3 pb-9 md:px-20 overflow-hidden text-lg md:text-2xl w-full text-center font-medium italic dark:text-white whitespace-break-spaces`}>
                         {animatedText}
                     </p>
                 </div>
