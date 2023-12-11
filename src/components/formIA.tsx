@@ -16,7 +16,7 @@ const FormIA = () => {
         e.preventDefault()
         try {
             setLoading(true)
-            const url = 'https://asesoriamanquilef-back-production.up.railway.app/';
+            const url = 'http://localhost:3001/';
             const options: OptionsFetch = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -29,7 +29,7 @@ const FormIA = () => {
         } catch (error) {
             setLoading(false)
             console.error('Error al consultar la IA:', error);
-            setResIA('Error al recibir respuesta de la IA.');
+            setResIA('Hay un problema de configuración, contacte al administrador.');
         }
     }
 
