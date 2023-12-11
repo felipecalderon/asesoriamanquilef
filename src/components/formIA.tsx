@@ -16,13 +16,12 @@ const FormIA = () => {
         e.preventDefault()
         try {
             setLoading(true)
-            const url = 'http://localhost:3001/';
             const options: OptionsFetch = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({query})
             };
-            const data = await fetchData(url, options)
+            const data = await fetchData(options)
             setLoading(false)
             setResIA(data.content);
             setQ('')
