@@ -4,15 +4,23 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react"
 import { VscLoading } from "react-icons/vsc";
 import { fetchData } from "@/utils/fetchs";
-
+import { counterStore } from "@/store/counterStore";
 const FormIA = () => {
     const [respIA, setResIA] = useState<string | null>(null)
     const [query, setQ] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const [animatedText, setAnimatedText] = useState("");
-
+    const { counter, setCounter } = counterStore()
+    
     const consultarIA = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         setResIA(null)
+        if(counter < 1) {
+            setResIA('Se agotaron los intentos, consulte con la abogada Manquilef directamente')
+            return setQ('')
+        }
+        setCounter(counter-1)
+        window.localStorage.setItem('counter', (counter - 1).toString())
         e.preventDefault()
         try {
             setLoading(true)
@@ -50,13 +58,19 @@ const FormIA = () => {
         }
     }, [respIA]);
 
+    useEffect(() => {
+        const counter = window.localStorage.getItem('counter')
+        if(counter) setCounter(Number(counter))
+        else window.localStorage.setItem('counter', '3')
+    }, [])
+    
     return (
         <>
             <div className="w-3/4 md:1/3 mx-auto">
                 <form className="space-y-8 py-6" onSubmit={consultarIA}>
                     <div>
                         <label htmlFor="consulta" className="block mb-2 text-center text-sm font-medium text-gray-600 dark:text-gray-300">Consulta online sin costo <br />
-                        <span className="italic">(tienes 3 consultas disponibles)</span></label>
+                        <span className="italic">(tienes {counter} consultas disponibles)</span></label>
                         <input
                             onChange={(e) => setQ(e.target.value)}
                             value={query}
