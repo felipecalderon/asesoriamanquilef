@@ -70,9 +70,9 @@ const FormIA = () => {
 
     return (
         <>
-            <div className="w-3/4 md:1/3 mx-auto">
-                <form className="space-y-8 py-16" onSubmit={consultarIA}>
-                    <div className="flex flex-col justify-center items-center">
+            <div className="w-full px-3 py-6 md:px-10 md:1/3 md:py-16">
+                <form className="space-y-8 flex justify-center items-center" onSubmit={consultarIA}>
+                    <div className="flex flex-col justify-center items-center md:w-2/3">
                         <div className="text-center py-5 w-fit">
                             <Titulo message="Consulta gratuita" />
                         </div>
@@ -86,7 +86,7 @@ const FormIA = () => {
                                 id="consulta"
                                 rows={4}
                                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Me sucedió lo siguiente... ...Podré dejarle testamento a mis mascotas?"
+                                placeholder="Ej: Me pasó lo siguiente... ... ...Podré dejarle testamento a mis mascotas?"
                             />
                             <button 
                                 className="absolute right-3 top-1/2 transform -translate-y-1/2"
@@ -102,7 +102,6 @@ const FormIA = () => {
                         <p className="text-lg text-left font-semibold italic dark:text-white">Cargando...</p>
                     </div>}
                 </form>
-            </div>
             {respIA &&
                 <div className="flex flex-col items-center">
                     {respIA !== animatedText && <Image src={'/escribiendo.avif'} alt='escribiendo' width={50} height={50} />}
@@ -111,6 +110,7 @@ const FormIA = () => {
                     </p>
                 </div>
             }
+            </div>
         </>
     )
 }
