@@ -18,9 +18,9 @@ const FormIA = () => {
     const consultarIA = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setResIA(null)
-        if(query === '') return setResIA('No escribiste nada, ingresa tu requerimiento')
+        if (query === '') return setResIA('No escribiste nada, ingresa tu requerimiento')
         if (counter < 1) {
-            setResIA('Se agotaron los intentos, consulte con la abogada Manquilef directamente')
+            setResIA('Se agotaron los intentos, consulte con la abogada Manquilef directamente: +569 8285 32 80')
             return setQ('')
         }
         setCounter(counter - 1)
@@ -46,17 +46,17 @@ const FormIA = () => {
 
     useEffect(() => {
         if (respIA) {
-            setAnimatedText(""); // Reiniciar el texto animado
+            setAnimatedText(""); // Reiniciar el texto
             let index = 0;
             const intervalId = setInterval(() => {
                 if (index < respIA.length) {
-                    const nextChar = respIA[index] || ""; // Asegúrese de que no sea undefined
+                    const nextChar = respIA[index] || ""; 
                     setAnimatedText(prev => prev + nextChar);
                     index++;
                 } else {
                     clearInterval(intervalId);
                 }
-            }, 40); // Ajuste este valor para controlar la velocidad de la animación
+            }, 40); 
 
             return () => clearInterval(intervalId);
         }
@@ -69,50 +69,48 @@ const FormIA = () => {
     }, [])
 
     return (
-        <>
-            <div className="w-full px-3 py-6 md:px-10 md:1/3 md:py-16">
-                <form className="space-y-8 flex justify-center items-center" onSubmit={consultarIA}>
-                    <div className="flex flex-col justify-center items-center md:w-2/3">
-                        <div className="text-center py-5 w-fit">
-                            <Titulo message="Consulta gratuita" />
-                        </div>
-                        <label htmlFor="consulta" className="block mb-2 text-center font-bold text-gray-600 dark:text-gray-300">Asistente virtual 24/7<br />
-                            <p className="italic font-extralight">(tienes <span className="font-bold">{counter}</span> consultas disponibles)</p>
-                        </label>
-                        <div className="relative w-full">
-                            <textarea
-                                onChange={(e) => setQ(e.target.value)}
-                                value={query}
-                                id="consulta"
-                                rows={4}
-                                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Ej: Me pasó lo siguiente... ... ...Podré dejarle testamento a mis mascotas?"
-                            />
-                            <button 
-                                className="absolute right-3 top-1/2 transform -translate-y-1/2"
-                                type="submit"
-                            >
-                                <LuSendHorizonal className="text-5xl text-violet-500 hover:text-violet-700" />
-                            </button>
-                        </div>
-
-                    </div>
-                    {loading && <div className="inline-flex gap-4 items-center">
-                        <VscLoading className='text-4xl animate-spin dark:text-white' />
-                        <p className="text-lg text-left font-semibold italic dark:text-white">Cargando...</p>
-                    </div>}
-                </form>
-            {respIA &&
-                <div className="flex flex-col items-center">
-                    {respIA !== animatedText && <Image src={'/escribiendo.avif'} alt='escribiendo' width={50} height={50} />}
-                    <p className={`px-6 pt-3 pb-9 md:px-20 overflow-hidden text-lg md:text-2xl w-full text-center font-medium italic dark:text-white whitespace-break-spaces`}>
-                        {animatedText}
-                    </p>
-                </div>
-            }
+        <div className="fixed bottom-4 right-4 md:right-10 md:bottom-10 w-80 md:w-96 bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
+            {/* Área de mensajes */}
+            <div className="flex-1 overflow-y-auto p-3 max-h-[calc(100vh-400px)]">
+            {loading && <div className="inline-flex gap-4 items-center">
+                    <VscLoading className='text-4xl animate-spin dark:text-white' />
+                    <p className="text-lg text-left font-semibold italic dark:text-white">Cargando...</p>
+                </div>}
+            {respIA && <div className="p-2 text-gray-700">{animatedText}
+            </div>}
             </div>
-        </>
-    )
+            <ChatInputForm
+                query={query}
+                setQuery={setQ}
+                handleSubmit={consultarIA}
+            />
+            <p className="px-4 py-1 text-xs italic">{counter > 0 
+                ? `Tienes ${counter} consultas disponibles` 
+                : 'Se acabaron los intentos de chat'}
+            </p>
+        </div>
+    );
+    
 }
+
+const ChatInputForm = ({ query, setQuery, handleSubmit }: { query: string, setQuery: React.Dispatch<React.SetStateAction<string>>, handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void> }) => {
+    return (
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 bg-white shadow-md rounded-lg">
+            <textarea
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Escribe tu mensaje aquí..."
+                className="p-3 h-32 text-sm text-gray-700 bg-gray-50 rounded-lg border border-gray-300 focus:ring-violet-500 focus:border-violet-500 resize-none"
+            />
+            <button 
+                type="submit" 
+                className="p-2 text-white bg-violet-500 hover:bg-violet-600 rounded-lg font-semibold focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-opacity-50"
+            >
+                Enviar
+            </button>
+        </form>
+    );
+};
+
 
 export default FormIA
