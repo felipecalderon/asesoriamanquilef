@@ -23,20 +23,16 @@ function throttle<T extends (...args: any[]) => any>(func: T, limit: number): (.
 }
 
 const BGFigura = () => {
-  const [puntoMouse, setMouse] = useState({
-    x: 0,
-    y: 0
-  });
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 }); 
 
   // Calcula el valor de translateX basado en el valor de 'point'
   const translate1: CSSProperties = {
-    transform: `translateX(${puntoMouse.x}px) translateY(${puntoMouse.y}px)`,
+    transform: `translateX(${mousePosition.x}px) translateY(${mousePosition.y}px)`,
     transition: '0.1s'
   };
 
   const translate2: CSSProperties = {
-    transform: `translateX(${puntoMouse.x * 2}px) translateY(${puntoMouse.y * 3}px)`,
+    transform: `translateX(${mousePosition.x * 2}px) translateY(${mousePosition.y * 3}px)`,
     transition: '0.1s'
   };
 
@@ -46,8 +42,6 @@ const BGFigura = () => {
   };
 
   useEffect(() => {
-    let animationFrameId: number;
-
     const handleMouseMove = throttle((event: MouseEvent) => {
       const { clientX, clientY } = event;
       const centerX = window.innerWidth / 2;
@@ -55,10 +49,6 @@ const BGFigura = () => {
       const x = (centerX - clientX) / 5;
       const y = (centerY - clientY) / 5;
 
-      // Planificar una actualización del estado
-      animationFrameId = requestAnimationFrame(() => {
-        setMouse({ x, y });
-      });
       setMousePosition({ x: clientX, y: clientY });
     }, 33); 
 
@@ -66,9 +56,6 @@ const BGFigura = () => {
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
     };
   }, []);
 

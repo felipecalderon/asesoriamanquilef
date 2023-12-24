@@ -1,12 +1,8 @@
 'use client'
-
-import Image from "next/image";
-import React, { useEffect, useState } from "react"
+import React, { Suspense, useEffect, useState } from "react"
 import { VscLoading } from "react-icons/vsc";
 import { fetchData } from "@/utils/fetchs";
 import { counterStore } from "@/store/counterStore";
-import Titulo from "./titulo";
-import { LuSendHorizonal } from "react-icons/lu";
 
 const FormIA = () => {
     const [respIA, setResIA] = useState<string | null>(null)
@@ -18,22 +14,22 @@ const FormIA = () => {
     const consultarIA = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setResIA(null)
+        console.log({counter});
         if (query === '') return setResIA('No escribiste nada, ingresa tu requerimiento')
         if (counter < 1) {
             setResIA('Se agotaron los intentos, consulte con la abogada Manquilef directamente: +569 8285 32 80')
             return setQ('')
         }
         setCounter(counter - 1)
-        window.localStorage.setItem('counter', (counter - 1).toString())
-        e.preventDefault()
+        setLoading(true)
         try {
-            setLoading(true)
             const options: OptionsFetch = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query })
             };
             const data = await fetchData(options)
+            if(!data.content) throw 'No se produjo ninguna respuesta'
             setLoading(false)
             setResIA(data.content);
             setQ('')
@@ -63,10 +59,12 @@ const FormIA = () => {
     }, [respIA]);
 
     useEffect(() => {
-        const counter = window.localStorage.getItem('counter')
-        if (counter) setCounter(Number(counter))
-        else window.localStorage.setItem('counter', '3')
-    }, [])
+        // Actualizar el estado para reflejar el valor correcto del contador del localStorage
+        const storedCounter = localStorage.getItem('counter');
+        if (storedCounter) {
+            setCounter(parseInt(storedCounter));
+        }
+    }, []);
 
     return (
         <div className="fixed bottom-4 right-4 md:right-10 md:bottom-10 w-80 md:w-96 bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
@@ -83,11 +81,13 @@ const FormIA = () => {
                 query={query}
                 setQuery={setQ}
                 handleSubmit={consultarIA}
-            />
-            <p className="px-4 py-1 text-xs italic">{counter > 0 
-                ? `Tienes ${counter} consultas disponibles` 
-                : 'Se acabaron los intentos de chat'}
-            </p>
+                />
+            {
+                counter > 0
+                ? <p suppressHydrationWarning className="px-4 py-1 text-xs italic">{`Tienes ${counter} consultas disponibles`}</p>
+                : <p suppressHydrationWarning className="px-4 py-1 text-xs italic">Se acabaron los intentos de chat</p>
+            
+            }
         </div>
     );
     
