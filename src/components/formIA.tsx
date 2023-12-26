@@ -3,6 +3,7 @@ import React, { Suspense, useEffect, useState } from "react"
 import { VscLoading } from "react-icons/vsc";
 import { fetchData } from "@/utils/fetchs";
 import { counterStore } from "@/store/counterStore";
+import { getCounterLocal } from "@/utils/counterLocal";
 
 const FormIA = () => {
     const [respIA, setResIA] = useState<string | null>(null)
@@ -14,7 +15,6 @@ const FormIA = () => {
     const consultarIA = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setResIA(null)
-        console.log({counter});
         if (query === '') return setResIA('No escribiste nada, ingresa tu requerimiento')
         if (counter < 1) {
             setResIA('Se agotaron los intentos, consulte con la abogada Manquilef directamente: +569 8285 32 80')
@@ -35,6 +35,7 @@ const FormIA = () => {
             setQ('')
         } catch (error) {
             setLoading(false)
+            setCounter(counter)
             console.error('Error al consultar la IA:', error);
             setResIA('Hay un problema de configuración, contacte al administrador.');
         }
@@ -58,14 +59,7 @@ const FormIA = () => {
         }
     }, [respIA]);
 
-    useEffect(() => {
-        // Actualizar el estado para reflejar el valor correcto del contador del localStorage
-        const storedCounter = localStorage.getItem('counter');
-        if (storedCounter) {
-            setCounter(parseInt(storedCounter));
-        }
-    }, []);
-
+    useEffect(() => setCounter(getCounterLocal()), [])
     return (
         <div className="fixed bottom-4 right-4 md:right-10 md:bottom-10 w-80 md:w-96 bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
             {/* Área de mensajes */}

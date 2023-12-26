@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Titulo from "@/components/titulo";
 import { Ephesis } from 'next/font/google';
 const fuente = Ephesis({ subsets: ["latin"], weight: '400' })
-
 const Banner = () => {
 	return (
 		<div className='relative w-full h-96 md:h-[600px]'>

@@ -1,3 +1,4 @@
+'use client'
 import { create } from 'zustand';
 
 interface CounterStore {
@@ -5,16 +6,9 @@ interface CounterStore {
     setCounter: (counter: number) => void 
 }
 
-let counterNumber = 3
-
-if (typeof window !== 'undefined') {
-    const counterLocal = window.localStorage.getItem('counter');
-    counterNumber = counterLocal ? parseInt(counterLocal) : 3;
-}
-
 export const counterStore = create<CounterStore>((set) => {
 	return {
-		counter: counterNumber,
+		counter: 0,
         setCounter: (newCounter) => {
 			window.localStorage.setItem('counter', newCounter.toString());
 			set({ counter: newCounter });
