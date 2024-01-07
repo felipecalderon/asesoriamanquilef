@@ -29,7 +29,8 @@ const FormIA = () => {
             const options: OptionsFetch = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ query })
+                body: JSON.stringify({ query }),
+                cache: 'no-cache'
             };
             const data = await fetchData('/api/chat', options)
             if(typeof data === 'string'){
@@ -37,11 +38,12 @@ const FormIA = () => {
                 setURLdoc(data);
                 setResIA(null)
                 return setQ('')
+            }else{
+                setURLdoc(null);
+                setLoading(false)
+                setResIA(data.content);
+                setQ('')
             }
-            setURLdoc(null);
-            setLoading(false)
-            setResIA(data.content);
-            setQ('')
         } catch (error) {
             setLoading(false)
             setCounter(counter)

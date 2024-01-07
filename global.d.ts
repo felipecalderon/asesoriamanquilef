@@ -5,5 +5,6 @@ type HeadersOption = {
 interface OptionsFetch  {
     method: 'POST' | 'GET' | 'PUT' | 'DELETE',
     headers: HeadersOption,
-    body: string
+    body: string,
+    cache?: RequestCache
 };
