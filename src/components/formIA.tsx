@@ -4,9 +4,12 @@ import { VscLoading } from "react-icons/vsc";
 import { fetchData } from "@/utils/fetchs";
 import { counterStore } from "@/store/counterStore";
 import { getCounterLocal } from "@/utils/counterLocal";
-
+import { Button } from "@nextui-org/react";
+import { useRouter } from 'next/navigation'
 const FormIA = () => {
+    const route = useRouter()
     const [respIA, setResIA] = useState<string | null>(null)
+    const [urlDoc, setURLdoc] = useState<string | null>(null)
     const [query, setQ] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const [animatedText, setAnimatedText] = useState("");
@@ -20,7 +23,7 @@ const FormIA = () => {
             setResIA('Se agotaron los intentos, consulte con la abogada Manquilef directamente: +569 8285 32 80')
             return setQ('')
         }
-        setCounter(counter - 1)
+        setCounter(counter + 1)
         setLoading(true)
         try {
             const options: OptionsFetch = {
@@ -28,8 +31,14 @@ const FormIA = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query })
             };
-            const data = await fetchData(options)
-            if(!data.content) throw 'No se produjo ninguna respuesta'
+            const data = await fetchData('/api/chat', options)
+            if(typeof data === 'string'){
+                setLoading(false)
+                setURLdoc(data);
+                setResIA(null)
+                return setQ('')
+            }
+            setURLdoc(null);
             setLoading(false)
             setResIA(data.content);
             setQ('')
@@ -41,6 +50,9 @@ const FormIA = () => {
         }
     }
 
+    const downloadDoc = (url: string) => {
+        window.open(url, '_blank');
+    }
     useEffect(() => {
         if (respIA) {
             setAnimatedText(""); // Reiniciar el texto
@@ -68,8 +80,8 @@ const FormIA = () => {
                     <VscLoading className='text-4xl animate-spin dark:text-white' />
                     <p className="text-lg text-left font-semibold italic dark:text-white">Cargando...</p>
                 </div>}
-            {respIA && <div className="p-2 text-gray-700">{animatedText}
-            </div>}
+            { respIA && <div className="p-2 text-gray-700">{animatedText} </div> }
+            { urlDoc && <div className="p-2 text-gray-700">Tengo lo que necesitas, puedes usar este documento como guía: <Button onClick={() => downloadDoc(urlDoc)}>Click aquí para descargar</Button> </div>}
             </div>
             <ChatInputForm
                 query={query}
