@@ -6,11 +6,15 @@ import { counterStore } from "@/store/counterStore";
 import { getCounterLocal } from "@/utils/counterLocal";
 import { Button } from "@nextui-org/react";
 import { useRouter } from 'next/navigation'
+import io, { Socket } from 'socket.io-client';
+import { DefaultEventsMap } from "@socket.io/component-emitter";
+
 const FormIA = () => {
     const route = useRouter()
     const [respIA, setResIA] = useState<string | null>(null)
     const [urlDoc, setURLdoc] = useState<string | null>(null)
     const [query, setQ] = useState<string>('')
+    const [socket, setSocket] = useState<Socket<DefaultEventsMap, DefaultEventsMap> | null>(null);
     const [loading, setLoading] = useState<boolean>(false)
     const [animatedText, setAnimatedText] = useState("");
     const { counter, setCounter } = counterStore()
@@ -23,7 +27,7 @@ const FormIA = () => {
             setResIA('Se agotaron los intentos, consulte con la abogada Manquilef directamente: +569 8285 32 80')
             return setQ('')
         }
-        setCounter(counter + 1)
+        setCounter(counter - 1)
         setLoading(true)
         try {
             const options: OptionsFetch = {
@@ -74,6 +78,25 @@ const FormIA = () => {
     }, [respIA]);
 
     useEffect(() => setCounter(getCounterLocal()), [])
+
+    useEffect(() => {
+	    const url_backend = process.env.NEXT_PUBLIC_URL_BACKEND as string;
+        const newSocket = io(url_backend); 
+        setSocket(newSocket);
+
+        newSocket.on('chat_response', (data) => {
+            console.log(data);
+        });
+
+        newSocket.on('chat_error', (error) => {
+            console.log({error});
+        });
+
+        // La función de limpieza aquí retorna void, lo cual es correcto
+        return () => {
+            newSocket.close();
+        };
+    }, []);
     return (
         <div className="fixed bottom-4 right-4 md:right-10 md:bottom-10 w-80 md:w-96 bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
             {/* Área de mensajes */}

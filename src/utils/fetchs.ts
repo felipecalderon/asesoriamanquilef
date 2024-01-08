@@ -1,7 +1,7 @@
 'use server';
 
 export async function fetchData(path: string, options: OptionsFetch) {
-	const url_backend = process.env.URL_BACKEND as string;
+	const url_backend = process.env.NEXT_PUBLIC_URL_BACKEND as string;
 	try {
 		const response = await fetch(`${url_backend}${path}`, options);
 		if (!response.ok) {
