@@ -32,11 +32,11 @@ export default function NavBarv2() {
                     <p className={`${fuente.className} text-2xl md:text-5xl font-semibold text-violet-950 dark:text-violet-100`}>Barbara Manquilef</p>
                 </NavbarBrand>
             </NavbarContent>
-
-            <NavbarContent className="hidden sm:flex gap-4" justify="center">
+            {/* Menú desktop */}
+            <NavbarContent className="hidden sm:flex gap-8" justify="center">
                 <NavbarBrand>
-                    <Logo />
-                    <p className={`${fuente.className} text-3xl md:text-5xl font-semibold text-violet-950 dark:text-violet-100`}>Barbara Manquilef</p>
+                    <Logo className="w-14 drop-shadow-lg"/>
+                    <p className={`${fuente.className} text-3xl md:text-4xl font-semibold text-violet-950 dark:text-violet-100`}>Barbara Manquilef</p>
                 </NavbarBrand>
                 {menuItems.map((menu, index) => (
                     <NavbarItem key={`${menu}-${index}`}>
@@ -58,7 +58,7 @@ export default function NavBarv2() {
                     </Button>
                 </NavbarItem>
             </NavbarContent>
-
+            {/* Menú movil */}
             <NavbarMenu>
                 {menuItems.map((menu, index) => (
                     <NavbarMenuItem key={`${menu}-${index}`}>
