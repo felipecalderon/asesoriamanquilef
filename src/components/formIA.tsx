@@ -1,16 +1,13 @@
 'use client'
-import React, { Suspense, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { VscLoading } from "react-icons/vsc";
-import { fetchData } from "@/utils/fetchs";
 import { counterStore } from "@/store/counterStore";
 import { getCounterLocal } from "@/utils/counterLocal";
 import { Button } from "@nextui-org/react";
-import { useRouter } from 'next/navigation'
 import io, { Socket } from 'socket.io-client';
 import { DefaultEventsMap } from "@socket.io/component-emitter";
 
 const FormIA = () => {
-    const route = useRouter()
     const [respIA, setResIA] = useState<string | null>(null)
     const [urlDoc, setURLdoc] = useState<string | null>(null)
     const [query, setQ] = useState<string>('')
@@ -18,43 +15,6 @@ const FormIA = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const [animatedText, setAnimatedText] = useState("");
     const { counter, setCounter } = counterStore()
-
-    // const consultarIA = async (e: React.FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault()
-    //     setResIA(null)
-    //     if (query === '') return setResIA('No escribiste nada, ingresa tu requerimiento')
-    //     if (counter < 1) {
-    //         setResIA('Se agotaron los intentos, consulte con la abogada Manquilef directamente: +569 8285 32 80')
-    //         return setQ('')
-    //     }
-    //     setCounter(counter - 1)
-    //     setLoading(true)
-    //     try {
-    //         const options: OptionsFetch = {
-    //             method: 'POST',
-    //             headers: { 'Content-Type': 'application/json' },
-    //             body: JSON.stringify({ query }),
-    //             cache: 'no-cache'
-    //         };
-    //         const data = await fetchData('/api/chat', options)
-    //         if(typeof data === 'string'){
-    //             setLoading(false)
-    //             setURLdoc(data);
-    //             setResIA(null)
-    //             return setQ('')
-    //         }else{
-    //             setURLdoc(null);
-    //             setLoading(false)
-    //             setResIA(data.content);
-    //             setQ('')
-    //         }
-    //     } catch (error) {
-    //         setLoading(false)
-    //         setCounter(counter)
-    //         console.error('Error al consultar la IA:', error);
-    //         setResIA('Hay un problema de configuración, contacte al administrador.');
-    //     }
-    // }
 
     const consultarIA = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
