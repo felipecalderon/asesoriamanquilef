@@ -57,7 +57,7 @@ const FormIA = () => {
 
 
     return (
-        <div className="fixed bottom-4 right-4 md:right-10 md:bottom-10 w-80 md:w-96 bg-white rounded-lg shadow-lg flex flex-col overflow-hidden">
+        <div className="fixed bottom-4 right-4 md:right-10 md:bottom-10 w-80 md:w-96 bg-white dark:bg-violet-950 rounded-lg shadow-lg flex flex-col overflow-hidden">
             {/* Área de mensajes */}
             <div className="flex-1 overflow-y-auto p-3 max-h-[calc(100vh-400px)]">
             { respIA && <div className="p-2 text-gray-700">{animatedText} </div> }
@@ -77,8 +77,8 @@ const FormIA = () => {
                 />
             {
                 counter > 0
-                ? <p suppressHydrationWarning className="px-4 py-1 text-xs italic">{`Tienes ${counter} consultas disponibles`}</p>
-                : <p suppressHydrationWarning className="px-4 py-1 text-xs italic">Se acabaron los intentos de chat</p>
+                ? <p suppressHydrationWarning className="px-4 py-1 text-xs italic dark:text-white">{`Tienes ${counter} consultas disponibles`}</p>
+                : <p suppressHydrationWarning className="px-4 py-1 text-xs italic dark:text-white">Se acabaron los intentos de chat</p>
             
             }
         </div>

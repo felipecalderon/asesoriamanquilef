@@ -20,7 +20,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.png" />
       </head>
-      <body className='bg-violet-100 dark:bg-violet-900'>
+      <body className='bg-violet-100 dark:bg-violet-900 transition-colors'>
         {children}
         </body>
     </html>

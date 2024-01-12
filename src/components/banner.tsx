@@ -1,9 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Titulo from "@/components/titulo";
-import { Ephesis } from 'next/font/google';
-const fuente = Ephesis({ subsets: ["latin"], weight: '400' })
-const Banner = () => {
+const Banner = ({children}: {children: React.ReactNode}) => {
 	return (
 		<div className='relative w-full h-96 md:h-[600px]'>
 			<Image
@@ -22,9 +19,8 @@ const Banner = () => {
 				className='sm:hidden w-full h-96 object-cover'
 				loading='lazy'
 			/>
-			<div className='absolute inset-0 flex flex-col items-center justify-center mb-52 md:mb-64'>
-                <Titulo message="Asesoría Jurídica"/>
-                <Titulo fuente={fuente} message="Manquilef"/>
+			<div className='absolute inset-0 flex flex-col items-center justify-center mb-32 md:mb-64'>
+				{children}
 			</div>
 		</div>
 	);
