@@ -10,6 +10,9 @@ export const getItemBoolean = (name: string): boolean => {
 }
 
 export const setItemBoolean = (name: string, dark: boolean): void => {
-    if(typeof Window === 'undefined') return void
+    if(typeof window === 'undefined'){
+        return console.log('void');
+    }
+    
     localStorage.setItem(name, JSON.stringify(dark))
 }

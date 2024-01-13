@@ -6,11 +6,11 @@ import React, { useEffect, useState } from 'react'
 import { getItemBoolean, setItemBoolean } from '@/utils/localstorage';
 
 export const DarkMode = () => {
-    const [isDark, setDark] = useState(getItemBoolean('dark'));
+    const [isDark, setDark] = useState<boolean>(() => getItemBoolean('dark'));
 
     // actualizar localStorage y la clase cuando 'isDark' cambia
     useEffect(() => {
-        if (typeof window !== "undefined") {
+        if (typeof window !== 'undefined') {
             setItemBoolean('dark', isDark);
             if (isDark) {
                 document.documentElement.classList.add('dark');
@@ -20,17 +20,22 @@ export const DarkMode = () => {
         }
     }, [isDark]);
 
+    useEffect(() => {
+        console.log({ isDark });
+    }, [])
+
     return (
         <Switch
+            suppressHydrationWarning={true}
             defaultSelected
             size="lg"
             color="secondary"
             isSelected={isDark}
             onValueChange={setDark}
             thumbIcon={() => (
-                isDark 
-                ?   <IoMoonSharp className='text-gray-400' />
-                :   <HiSun className='text-yellow-600' />
+                isDark
+                    ? <IoMoonSharp className='text-gray-400' />
+                    : <HiSun className='text-yellow-600' />
             )}
         >
         </Switch>
