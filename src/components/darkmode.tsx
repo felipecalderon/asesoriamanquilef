@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 import { getItemBoolean, setItemBoolean } from '@/utils/localstorage';
 
 export const DarkMode = () => {
-    const [isDark, setDark] = useState<boolean>(() => getItemBoolean('dark'));
+    const [isDark, setDark] = useState<boolean>(getItemBoolean('dark'));
 
     // actualizar localStorage y la clase cuando 'isDark' cambia
     useEffect(() => {
@@ -20,13 +20,8 @@ export const DarkMode = () => {
         }
     }, [isDark]);
 
-    useEffect(() => {
-        console.log({ isDark });
-    }, [])
-
     return (
         <Switch
-            suppressHydrationWarning={true}
             defaultSelected
             size="lg"
             color="secondary"

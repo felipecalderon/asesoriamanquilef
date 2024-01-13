@@ -1,9 +1,12 @@
 import BGFigura from "@/components/figura-background";
 import FormIA from "@/components/formIA";
 import Banner from "@/components/banner";
-import Header from "@/components/header";
 import Titulo from "@/components/titulo";
 import { Ephesis } from 'next/font/google';
+import dynamic from "next/dynamic";
+import Snav from "@/components/skeletons/Snav";
+
+const Header = dynamic(() => import('@/components/header'), {ssr: false, loading: () => <Snav />})
 const fuente = Ephesis({ subsets: ["latin"], weight: '400' })
 
 export default function Home() {
