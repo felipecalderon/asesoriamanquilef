@@ -67,7 +67,7 @@ const FormIA = () => {
             <div className="flex-1 overflow-y-auto p-1 max-h-[calc(100vh-400px)]">
                 {historial.map((item, index) => (
                     <div key={index} className="mb-2">
-                    <div className="text-left text-sm text-gray-700 bg-violet-200 mb-1 px-2 py-1 w-fit rounded-e-lg rounded-t-lg dark:bg-violet-800 dark:text-white max-w-xs">{item.consulta}</div>
+                    { item.consulta !== '' && <div className="text-left text-sm text-gray-700 bg-violet-200 mb-1 px-2 py-1 w-fit rounded-e-lg rounded-t-lg dark:bg-violet-800 dark:text-white max-w-xs">{item.consulta}</div>}
                     { index === historial.length - 1
                       ? <div className="bg-fuchsia-200 text-gray-700 text-sm text-right mb-1 px-2 py-1 w-fit ml-auto rounded-s-lg rounded-t-lg dark:bg-fuchsia-800 dark:text-white max-w-xs">{animatedText}</div>
                       : <div className="bg-fuchsia-200 text-gray-700 text-sm text-right mb-1 px-2 py-1 w-fit ml-auto rounded-s-lg rounded-t-lg dark:bg-fuchsia-800 dark:text-white max-w-xs">{item.respuesta}</div>
