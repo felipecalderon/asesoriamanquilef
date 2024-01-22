@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import { credenciales } from "./providers/credenciales";
 import { google } from "./providers/google";
 
-export const auth = NextAuth({
+export const handler = NextAuth({
   // Configure one or more authentication providers
   providers: [
     credenciales,
@@ -10,4 +10,4 @@ export const auth = NextAuth({
   ],
 })
 
-export { auth as GET, auth as POST}
+export { handler as GET, handler as POST}
