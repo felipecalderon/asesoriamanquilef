@@ -19,7 +19,6 @@ export default function Home() {
           <Titulo message="Asesoría Jurídica"/>
           <Titulo fuente={fuente} message="Manquilef"/>
         </Banner>
-        <LoginForm />
         <FormIA />
       </div>
       <div className="z-10 relative">

@@ -29,7 +29,7 @@ export const DarkMode = () => {
             onValueChange={setDark}
             thumbIcon={() => (
                 isDark
-                    ? <IoMoonSharp className='text-gray-400' />
+                    ? <IoMoonSharp className='text-fuchsia-900' />
                     : <HiSun className='text-yellow-600' />
             )}
         >
