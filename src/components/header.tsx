@@ -5,6 +5,7 @@ import { Ephesis } from 'next/font/google'
 import { DarkMode } from "./darkmode";
 import { useState } from "react";
 import { convertirCadena } from "@/utils/textoaURL";
+import Boton from "./ui/BotonLogin";
 
 const fuente = Ephesis({ subsets: ["latin"], weight: '400' })
 
@@ -55,9 +56,7 @@ export default function Header() {
 
             <NavbarContent justify="end">
                 <NavbarItem>
-                    <Button size="sm" radius="full" as={Link} className="bg-yellow-500 dark:bg-violet-600 text-white" href="#" variant="shadow">
-                        Contactar
-                    </Button>
+                    <Boton />
                 </NavbarItem>
                     <DarkMode />
             </NavbarContent>

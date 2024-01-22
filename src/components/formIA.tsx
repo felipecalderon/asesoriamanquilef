@@ -6,7 +6,7 @@ import { Button } from "@nextui-org/react";
 import ChatInputForm from "./chatForm";
 import { FaRegFilePdf } from "react-icons/fa";
 import useSocket from "@/hooks/useSocket";
-import {Spinner} from "@nextui-org/react";
+import LoadingText from "./ui/LoadingText";
 
 const FormIA = () => {
     const [animatedText, setAnimatedText] = useState("");
@@ -62,13 +62,10 @@ const FormIA = () => {
             <div className="flex-1 overflow-y-auto p-3 max-h-[calc(100vh-400px)]">
             { respIA && <div className="p-2 text-gray-700">{animatedText} </div> }
             { urlDoc && <div className="p-2 text-gray-700">Tengo lo que necesitas, puedes usar este documento como guía: 
-                <Button className="text-xs mt-3 mx-1 text-violet-950" onClick={() => downloadDoc('urlDoc')}>Ver documento <FaRegFilePdf className="text-lg text-violet-900" /> </Button> 
+                <Button className="text-xs mt-3 mx-1 text-violet-950" onClick={() => downloadDoc(urlDoc)}>Ver documento <FaRegFilePdf className="text-lg text-violet-900" /> </Button> 
                 </div>
             }
-            {loading && <div className="inline-flex gap-4 items-center">
-                    <Spinner color="secondary"/>
-                    <p className="text-lg text-left font-semibold italic dark:text-white">Cargando...</p>
-                </div>}
+            {loading && <LoadingText />}
             </div>
             <ChatInputForm
                 query={query}

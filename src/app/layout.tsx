@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-
+import SessionAuth from '@/components/SessionProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -21,8 +21,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.png" />
       </head>
       <body className='bg-violet-100 dark:bg-violet-900 transition-colors'>
-        {children}
-        </body>
+        <SessionAuth>
+          {children}
+        </SessionAuth>
+      </body>
     </html>
   )
 }

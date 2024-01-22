@@ -22,6 +22,7 @@ const useSocket = () => {
         setSocket(newSocket);
         newSocket.on('chat_response', (data) => {
             if (typeof data === 'string') {
+                console.log({data});
                 setHistorial(historialAnterior => [...historialAnterior, { consulta: ultimaConsulta, respuesta: data }]);
                 setURLdoc(data);
                 setResIA(null);
