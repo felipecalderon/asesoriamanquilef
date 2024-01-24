@@ -1,5 +1,7 @@
 'use server';
 
+import { OptionsFetch } from "../../global";
+
 export async function fetchData(path: string, options: OptionsFetch) {
 	const url_backend = process.env.NEXT_PUBLIC_URL_BACKEND as string;
 	try {
