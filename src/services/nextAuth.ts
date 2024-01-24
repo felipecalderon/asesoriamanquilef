@@ -9,12 +9,12 @@ export const authOptions: NextAuthOptions = {
 	callbacks: {
 		async jwt({ token, account, profile }) {
 			if (account && account.type === 'credentials') {
-				token.userId = account.providerAccountId; 
+				token.userId = account.providerAccountId;
 			}
 			return token;
 		},
 		async session({ session, token, user }) {
-			if (session.user) session.user.id = token.userId;
+			session.user.id = token.userId;
 			return session;
 		},
 	},
@@ -23,19 +23,21 @@ export const authOptions: NextAuthOptions = {
 			name: 'Credentials',
 			credentials: {
 				username: {
-					label: 'Username',
+					label: 'Usuario',
 					type: 'text',
 					placeholder: 'username',
 				},
-				password: { label: 'Password', type: 'password' },
+				password: { label: 'Contraseña', type: 'password' },
 			},
 			async authorize(credentials, req) {
-				const { username, password } = credentials as {
-					username: string;
-					password: string;
-				};
-
-				return authService.authenticate(username, password); //(5)
+				const user = await authService.authenticate(
+					credentials?.username,
+					credentials?.password
+				);
+				if (!user) {
+					throw new Error('No se encontró el usuario');
+				}
+				return user;
 			},
 		}),
 	],
