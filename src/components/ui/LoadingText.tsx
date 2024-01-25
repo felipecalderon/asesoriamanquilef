@@ -5,7 +5,7 @@ const LoadingText = () => {
   return (
     <div className="inline-flex gap-4 items-center">
         <Spinner color="secondary"/>
-        <p className="text-lg text-left font-semibold italic dark:text-white">Cargando...</p>
+        <p className="text-sm text-left font-semibold italic dark:text-white">Cargando...</p>
     </div>
   )
 }

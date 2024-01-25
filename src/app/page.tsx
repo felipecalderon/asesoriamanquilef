@@ -6,6 +6,7 @@ import { Ephesis } from 'next/font/google';
 import dynamic from "next/dynamic";
 import Snav from "@/components/skeletons/Snav";
 import LoginForm from "@/components/ui/LoginForm";
+import Editor from "@/components/editor/lexical";
 
 const Header = dynamic(() => import('@/components/header'), {ssr: false, loading: () => <Snav />})
 const fuente = Ephesis({ subsets: ["latin"], weight: '400' })
@@ -19,7 +20,9 @@ export default function Home() {
           <Titulo message="Asesoría Jurídica"/>
           <Titulo fuente={fuente} message="Manquilef"/>
         </Banner>
+        <Editor />
         <FormIA />
+        
       </div>
       <div className="z-10 relative">
         <BGFigura />
