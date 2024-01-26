@@ -21,7 +21,7 @@ export default function Home() {
           <Titulo message="Asesoría Jurídica" />
           <Titulo fuente={fuente} message="Manquilef" />
         </Banner>
-        <div className="flex flex-row gap-3 px-20 py-10 justify-center">
+        <div className="flex flex-col-reverse px-6 items-center md:items-start text-center sm:text-left md:flex-row gap-3 md:px-20 py-10 justify-center">
           <Image className="shadow-2xl" src={'/barbara-foto-vertical.jpg'} alt="Foto vertical" width={300} height={700} />
           <div className="max-w-xl">
             <h1 className="dark:text-white">¡Hola! Soy Barbara y quiero ayudarte..</h1>
