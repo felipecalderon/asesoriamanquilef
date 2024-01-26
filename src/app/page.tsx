@@ -5,11 +5,12 @@ import Titulo from "@/components/titulo";
 import { Ephesis } from 'next/font/google';
 import dynamic from "next/dynamic";
 import Snav from "@/components/skeletons/Snav";
-import LoginForm from "@/components/ui/LoginForm";
-import Editor from "@/components/editor/lexical";
+import Image from "next/image";
+import Servicios from "@/components/servicios";
 
-const Header = dynamic(() => import('@/components/header'), {ssr: false, loading: () => <Snav />})
+const Header = dynamic(() => import('@/components/header'), { ssr: false, loading: () => <Snav /> })
 const fuente = Ephesis({ subsets: ["latin"], weight: '400' })
+
 
 export default function Home() {
   return (
@@ -17,14 +18,22 @@ export default function Home() {
       <div className="z-10 relative">
         <Header />
         <Banner >
-          <Titulo message="Asesoría Jurídica"/>
-          <Titulo fuente={fuente} message="Manquilef"/>
+          <Titulo message="Asesoría Jurídica" />
+          <Titulo fuente={fuente} message="Manquilef" />
         </Banner>
-        <Editor />
-        <FormIA />
-        
+        <div className="flex flex-row gap-3 px-20 py-10 justify-center">
+          <Image className="shadow-2xl" src={'/barbara-foto-vertical.jpg'} alt="Foto vertical" width={300} height={700} />
+          <div className="max-w-xl">
+            <h1 className="dark:text-white">¡Hola! Soy Barbara y quiero ayudarte..</h1>
+            <h3><i>Con más de 5 años de experiencias en diversos casos</i></h3>
+            <Servicios />
+            <p></p>
+          </div>
+        </div>
+
       </div>
       <div className="z-10 relative">
+        <FormIA />
         <BGFigura />
       </div>
     </div>

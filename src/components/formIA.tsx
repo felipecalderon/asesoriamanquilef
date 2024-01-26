@@ -63,10 +63,10 @@ const FormIA = () => {
 
     return (
         <>
-        <div className="fixed bottom-4 right-4 md:right-10 md:bottom-10 w-80 md:w-2/12 bg-white dark:bg-violet-950 rounded-lg shadow-lg flex flex-col overflow-hidden">
-        <Button onPress={onOpen}>Hablemos</Button>
+        <div className="fixed bottom-4 right-4 md:right-10 md:bottom-10 w-80 md:w-2/12 shadow-lg flex flex-col">
+        <Button onPress={onOpen} radius="sm">Hablemos</Button>
             <Modal isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false}>
-            <ModalContent className="bg-white dark:bg-violet-950 ">
+            <ModalContent className="bg-white dark:bg-violet-950 py-6">
                 {historial.map((item, index) => (
                     <div key={index} className="mb-2">
                     { <div className="text-left text-sm text-gray-700 bg-violet-200 mb-1 px-2 py-1 w-fit rounded-e-lg rounded-t-lg dark:bg-violet-800 dark:text-white max-w-xs">{item.consulta}</div>}
