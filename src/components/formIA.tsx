@@ -72,7 +72,7 @@ const FormIA = () => {
         <>
             <div className="fixed bottom-4 right-4 md:right-10 md:bottom-10 md:w-2/12 shadow-lg flex flex-col">
                 <Button onPress={onOpen} className="rounded-lg shadow-md px-6 pt-2 pb-1 text-sm border-fuchsia-400 border-2 font-semibold bg-fuchsia-600 hover:bg-fuchsia-500 text-white hover:scale-105 transition-all">
-                ¡Chatea ahora! <BiSolidMessageDetail className='text-xl rotate-12 mb-3 animate-pulse' />
+                ¡Chatea ahora! <BiSolidMessageDetail className='text-2xl text-fuchsia-50 mb-1 animate-wiggle' />
                 </Button>
                 <Modal scrollBehavior='inside' isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false} closeButton={<div><FaWindowClose className='text-xl text-red-600 dark:text-white'/></div>}>
                     <ModalContent className="bg-white dark:bg-violet-950">
