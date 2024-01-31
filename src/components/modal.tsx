@@ -16,7 +16,7 @@ export default function ModalButton({buttonText, Icono, children, lista}: {butto
               <Icono className="text-lg text-violet-900 dark:text-violet-200" />
               {buttonText}
             </Button>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="center" size="2xl">
+      <Modal scrollBehavior='inside' isOpen={isOpen} onOpenChange={onOpenChange} placement="center" size="2xl">
         <ModalContent className="dark:bg-violet-950">
               <ModalHeader>{buttonText}</ModalHeader>
               <ModalBody>
