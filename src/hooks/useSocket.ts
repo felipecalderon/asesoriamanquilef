@@ -50,10 +50,10 @@ const useSocket = () => {
     // Actualizar el ref cada vez que query cambia
     useEffect(() => {
         queryRef.current = query;
-    }, [query]);
+    }, [query, respIA]);
 
     // Retorno de estados y funciones
-    return { socket, respIA, urlDoc, loading, query, setQ, setResIA, setLoading, historial };
+    return { socket, respIA, urlDoc, loading, query, setQ, setResIA, setLoading, historial, setHistorial };
 };
 
 export default useSocket;
