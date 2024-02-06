@@ -19,8 +19,16 @@ export default function RootLayout({
     <html lang="es_ES" className={inter.className}>
       <head>
         <link rel="icon" href="/favicon.png" />
+        <link
+          href="https://cdn.jsdelivr.net/npm/quill@2.0.0-beta.0/dist/quill.snow.css"
+          rel="stylesheet"
+        />
+        <link
+          href="https://cdn.jsdelivr.net/npm/quill@2.0.0-beta.0/dist/quill.bubble.css"
+          rel="stylesheet"
+        />
       </head>
-      <body className='bg-violet-100 dark:bg-violet-900 transition-colors'>
+      <body className='bg-violet-100 dark:bg-violet-900 transition-colors min-h-screen'>
         <SessionAuth>
           {children}
         </SessionAuth>

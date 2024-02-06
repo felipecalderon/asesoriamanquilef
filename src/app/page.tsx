@@ -30,7 +30,6 @@ export default function Home() {
             <p></p>
           </div>
         </div>
-
       </div>
       <div className="z-10 relative">
         <FormIA />
