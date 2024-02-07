@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import Snav from "@/components/skeletons/Snav";
 import Image from "next/image";
 import Servicios from "@/components/servicios";
+import Formacion from "@/components/formacionAcademica";
 
 const Header = dynamic(() => import('@/components/header'), { ssr: false, loading: () => <Snav /> })
 const fuente = Ephesis({ subsets: ["latin"], weight: '400' })
@@ -21,13 +22,13 @@ export default function Home() {
           <Titulo message="Asesoría Jurídica" />
           <Titulo fuente={fuente} message="Manquilef" />
         </Banner>
-        <div className="flex flex-col-reverse px-6 items-center md:items-start text-center sm:text-left md:flex-row gap-3 md:px-20 py-10 justify-center">
-          <Image className="shadow-2xl" src={'/barbara-foto-vertical.jpg'} alt="Foto vertical" width={300} height={700} />
+        <div className="flex flex-col-reverse px-6 items-center md:items-start text-center sm:text-left md:flex-row gap-12 md:px-20 py-10 justify-center">
+          <Image className="shadow-2xl rounded-2xl" src={'/barbara-foto-vertical.jpg'} alt="Foto vertical" width={300} height={700} />
           <div className="max-w-xl">
-            <h1 className="dark:text-white">¡Hola! Soy Barbara, estoy para ayudarte..</h1>
+            <h1 className="dark:text-white text-2xl font-semibold">¡Hola! Soy Barbara, estoy para ayudarte..</h1>
             <h3><i>Con más de 5 años de experiencias en diversos casos</i></h3>
             <Servicios />
-            <p></p>
+            <Formacion />
           </div>
         </div>
       </div>

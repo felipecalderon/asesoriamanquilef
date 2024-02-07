@@ -1,67 +1,31 @@
 'use client'
-import ModalButton from "@/components/modal";
-import { Divider } from "@nextui-org/react";
+import ModalButton from "@/components/ui/modal";
 import { GiCat } from "react-icons/gi";
 import { MdBusinessCenter, MdFamilyRestroom } from "react-icons/md";
-const listas = {
-  familia: [
-    'Asesoría Mediación Familiar',
-    'Transacción Judicial',
-    'Pensión Alimenticia',
-    'Modificación de Pensión Alimenticia',
-    'Cese de Pensión Alimenticia',
-    'Relación Directa y Regular (visitas)',
-    'Modificación de Relación Directa y Regular',
-    'Cuidado Personal',
-    'Divorcio Unilateral',
-    'Divorcio de Común Acuerdo',
-    'Divorcio por Culpa',
-    'Medidas de Protección',
-  ],
-  animal: [
-    'Querella Infraccional por mordidas de Perros Potencialmente Peligrosos',
-    'Querella Infraccional por Criadero Ilegal',
-    'Problemas Vecinales',
-    'Problemas comunitarios',
-  ],
-  concursal: [
-    'Solicitud de Liquidación Voluntaria de Persona Deudora',
-    'Solicitud de Liquidación Voluntaria de Empresa Deudora',
-    'Liquidación Forzosa de Empresa Deudora',
-    'Solicitud de Renegociación de Persona Deudora',
-    'Solicitud de Reorganización de Empresa Deudora', 
-  ]
-}
+import { FaRegistered } from "react-icons/fa6";
+import { listas } from "@/constants/listaServicios";
+import { IoStorefront } from "react-icons/io5";
+import { PiButterflyFill } from "react-icons/pi";
 
 const Servicios = () => {
+  const servicios = [
+    { buttonText: "Derecho de Familia", Icono: MdFamilyRestroom, lista: listas.familia },
+    { buttonText: "Derecho Animal", Icono: GiCat, lista: listas.animal },
+    { buttonText: "Derecho Concursal", Icono: MdBusinessCenter, lista: listas.concursal },
+    { buttonText: "Derecho Laboral", Icono: IoStorefront, lista: listas.laboral },
+    { buttonText: "Propiedad Intelectual", Icono: FaRegistered, lista: listas.marcas },
+    { buttonText: "Protección Ambiental", Icono: PiButterflyFill, lista: listas.ambiental },
+  ];
   return (
     <>
-            <ModalButton
-              buttonText="Derecho de familia"
-              Icono={MdFamilyRestroom}
-              lista={listas.familia}
-            >
-              <Divider />
-              <h4 className="font-bold">PRÁCTICA PROFESIONAL CORPORACIÓN DE ASISTENCIA JUDICIAL, OFICINA DE FAMILIA, TEMUCO.</h4>
-              <p><i>2020: Marzo-Septiembre:</i> Procedimientos judiciales en Tribunales de Familia.</p>
-              <Divider />
-              <h4 className="font-bold">TRABAJO INDEPENDIENTE COMO PROCURADORA TEMUCO.</h4>
-              <p><i>2021 - Actualidad:</i> Causas Administrativas y  Judiciales en Juzgados Civiles del sur de Chile y Tribunales de Familia.</p>
-            </ModalButton>
-            <ModalButton
-              buttonText="Derecho animal"
-              Icono={GiCat}
-              lista={listas.animal}
-            >
-              <p>Holaaa 2</p>
-            </ModalButton>
-            <ModalButton
-              buttonText="Derecho concursal"
-              Icono={MdBusinessCenter}
-              lista={listas.concursal}
-            >
-              <p>Holaaa 3</p>
-            </ModalButton>
+      {servicios.map((servicio, index) => (
+        <ModalButton
+          key={index}
+          buttonText={servicio.buttonText}
+          Icono={servicio.Icono}
+          lista={servicio.lista}
+        />
+      ))}
     </>
   )
 }

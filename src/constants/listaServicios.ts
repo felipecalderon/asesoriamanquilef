@@ -1,0 +1,68 @@
+export const listas = {
+    familia: [
+      'Asesoría Mediación Familiar',
+      'Transacción Judicial',
+      'Pensión Alimenticia',
+      'Modificación de Pensión Alimenticia',
+      'Cese de Pensión Alimenticia',
+      'Relación Directa y Regular (visitas)',
+      'Modificación de Relación Directa y Regular',
+      'Cuidado Personal',
+      'Divorcio Unilateral',
+      'Divorcio de Común Acuerdo',
+      'Divorcio por Culpa',
+      'Medidas de Protección',
+    ],
+    animal: [
+      'Asesoría Jurídica en Legislación de Protección Animal',
+      'Representación en Conflictos por Custodia de Mascotas',
+      'Representación Legal en Denuncias por Abandono de Animales',
+      'Defensa Legal en Casos de Maltrato Animal',
+      'Querella Infraccional por mordidas de Perros Potencialmente Peligrosos',
+      'Consultoría sobre Regulaciones de Bienestar Animal en Establecimientos Comerciales',
+      'Querella Infraccional por Criadero Ilegal',
+      'Problemas Vecinales',
+      'Problemas comunitarios',
+    ],
+    concursal: [
+      'Gestión de Activos en Procesos de Liquidación',
+      'Consultoría en Prevención de Insolvencia Empresarial',
+      'Asesoría en Acuerdos de Refinanciamiento',
+      'Representación de Acreedores en Procedimientos Concursales',
+      'Solicitud de Liquidación Voluntaria de Persona Deudora',
+      'Solicitud de Liquidación Voluntaria de Empresa Deudora',
+      'Liquidación Forzosa de Empresa Deudora',
+      'Solicitud de Renegociación de Persona Deudora',
+      'Solicitud de Reorganización de Empresa Deudora', 
+    ],
+    marcas: [
+      "Registro y Protección de Marcas y Patentes",
+      "Defensa en Casos de Infracción de Derechos de Autor",
+      "Asesoría en Derechos de Imagen y Propiedad Intelectual Digital",
+      "Gestión de Licencias y Contratos de Propiedad Intelectual",
+      "Consultoría en Estrategias de Protección de Propiedad Intelectual para Startups y Emprendimientos",
+      "Negociación en Conflictos de Propiedad Intelectual",
+      "Auditorías de Propiedad Intelectual para Due Diligence",
+      "Asesoramiento en la Creación de Portafolios de Propiedad Intelectual"
+    ],
+    laboral: [
+      "Representación en Negociaciones Colectivas",
+      "Defensa en Litigios Laborales",
+      "Asesoría en Cumplimiento Normativo Laboral",
+      "Consultoría en Políticas de Recursos Humanos y Prevención de Riesgos Laborales",
+      "Asesoramiento en Procesos de Despido y Reestructuración Laboral",
+      "Gestión de Conflictos Laborales y Mediación",
+      "Implementación de Políticas de Igualdad y No Discriminación en el Trabajo",
+      "Auditorías Laborales para la Identificación de Riesgos y Oportunidades de Mejora"
+    ],
+    ambiental: [
+      "Asesoría en Cumplimiento de Normativa Ambiental",
+      "Representación en Procedimientos Sancionatorios Ambientales",
+      "Consultoría en Proyectos de Desarrollo Sostenible",
+      "Defensa Legal en Conflictos sobre Recursos Naturales",
+      "Gestión de Permisos y Licencias Ambientales",
+      "Asesoría en la Evaluación de Impacto Ambiental de Proyectos",
+      "Consultoría en Gestión de Residuos y Economía Circular",
+      "Representación en Casos de Responsabilidad por Daño Ambiental"
+    ]
+  }
