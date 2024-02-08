@@ -12,7 +12,6 @@ const Servicios = () => {
     { buttonText: "Derecho de Familia", Icono: MdFamilyRestroom, lista: listas.familia },
     { buttonText: "Derecho Animal", Icono: GiCat, lista: listas.animal },
     { buttonText: "Derecho Concursal", Icono: MdBusinessCenter, lista: listas.concursal },
-    { buttonText: "Derecho Laboral", Icono: IoStorefront, lista: listas.laboral },
     { buttonText: "Propiedad Intelectual", Icono: FaRegistered, lista: listas.marcas },
     { buttonText: "Protección Ambiental", Icono: PiButterflyFill, lista: listas.ambiental },
   ];
