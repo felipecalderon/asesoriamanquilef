@@ -16,7 +16,7 @@ const toolbarOptions = [
 
 const QuillEditor = () => {
     const quillRef = useRef(null);
-    const { setEditor } = editorStore()
+    const { editContent } = editorStore()
     const selectLocalImage = async (quill: Quill) => {
         const input = document.createElement('input');
         input.setAttribute('type', 'file');
@@ -69,7 +69,7 @@ const QuillEditor = () => {
 
             // Manejo de eventos, por ejemplo:
             quill.on('text-change', (delta, oldDelta, source) => {
-                setEditor(quill.root.innerHTML)
+                editContent(quill.root.innerHTML)
             });
         }
 

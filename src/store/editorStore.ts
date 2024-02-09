@@ -1,13 +1,21 @@
 import { create } from "zustand";
 
 interface EditorInterface {
-    editorContent: string,
-    setEditor: (editorContent: string) => void
+    autor: string,
+    title: string,
+    content: string,
+    editAutor: (autor: string) => void
+    editTitle: (title: string) => void
+    editContent: (content: string) => void
 }
 export const editorStore = create<EditorInterface>((set) => {
     return {
-        editorContent: '',
-        setEditor: (editorContent: string) => set({editorContent})
+        autor: '',
+        title: '',
+        content: '',
+        editAutor: (autor: string) => set({autor}),
+        editTitle: (title: string) => set({title}),
+        editContent: (content: string) => set({content}),
     }
 })
 

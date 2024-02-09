@@ -4,7 +4,6 @@ import { GiCat } from "react-icons/gi";
 import { MdBusinessCenter, MdFamilyRestroom } from "react-icons/md";
 import { FaRegistered } from "react-icons/fa6";
 import { listas } from "@/constants/listaServicios";
-import { IoStorefront } from "react-icons/io5";
 import { PiButterflyFill } from "react-icons/pi";
 
 const Servicios = () => {

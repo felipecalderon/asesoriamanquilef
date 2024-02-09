@@ -2,7 +2,10 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import SessionAuth from '@/components/SessionProvider'
+import dynamic from 'next/dynamic'
+import Snav from '@/components/skeletons/Snav'
 const inter = Inter({ subsets: ['latin'] })
+const Header = dynamic(() => import('@/components/header'), { ssr: false, loading: () => <Snav /> })
 
 export const metadata: Metadata = {
   title: 'Asesoría Manquilef',
@@ -30,6 +33,7 @@ export default function RootLayout({
       </head>
       <body className='bg-violet-100 dark:bg-violet-900 transition-colors min-h-screen'>
         <SessionAuth>
+          <Header />
           {children}
         </SessionAuth>
       </body>
