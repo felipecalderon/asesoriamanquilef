@@ -1,23 +1,33 @@
+'use client'
 import { guardarPost } from "@/utils/insertDB";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, ModalProps, Button, useDisclosure, Image } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Image } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import LoadingText from "./ui/LoadingText";
 
 export default function CreatePostModal({ title, content, image }: { image: string, title: string, content: string }) {
+    const router = useRouter()
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const [loading, setLoading] = useState(false)
     const saveContent = async () => {
         try {
+            setLoading(true)
             const data = {
                 autor: 'Bárbara',
                 title,
                 content,
                 image,
             }
-            const post = await guardarPost(data)
+            await guardarPost(data)
+            setLoading(false)
+            router.push('/')
         } catch (error) {
             console.log({ error });
         }
     }
 
-    const estaDesactivado = title !== '' && content !== ''
+    const estaDesactivado = title !== '' && content !== '' && image !== ''
+
     return (
         <div className="flex flex-col gap-2">
             <Button
@@ -29,7 +39,7 @@ export default function CreatePostModal({ title, content, image }: { image: stri
             <Modal
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
-                scrollBehavior="inside"
+                scrollBehavior="outside"
             >
                 <ModalContent>
                     {(onClose) => (
@@ -39,8 +49,8 @@ export default function CreatePostModal({ title, content, image }: { image: stri
                             </ModalHeader>
                             <ModalBody>
                                 <Image
-                                    alt="Card background"
-                                    className="object-cover rounded-xl"
+                                    alt="Referencia del Post"
+                                    className="object-cover rounded-xl max-h-52"
                                     src={image}
                                     width={270}
                                 />
@@ -51,7 +61,7 @@ export default function CreatePostModal({ title, content, image }: { image: stri
                                     Cerrar
                                 </Button>
                                 <Button className="bg-violet-800 text-white" onPress={saveContent}>
-                                    Publicar
+                                    { !loading ? 'Publicar' : <LoadingText />}
                                 </Button>
                             </ModalFooter>
                         </>
