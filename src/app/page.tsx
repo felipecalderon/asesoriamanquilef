@@ -9,6 +9,7 @@ import LineaDeTiempo from "@/components/timeline";
 
 const fuente = Ephesis({ subsets: ["latin"], weight: '400' })
 import { cursosOtros } from "@/constants/cursosOtros";
+import Posts from "@/components/Posts";
 
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
             <LineaDeTiempo info={cursosOtros} title="Mi desarrollo profesional"/>
           </div>
         </div>
+        <Posts />
       </div>
       <div className="z-10 relative">
         <FormIA />
