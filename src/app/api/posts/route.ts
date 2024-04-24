@@ -1,6 +1,6 @@
 import { listOfPosts } from '@/utils/insertDB';
 import { NextRequest, NextResponse } from 'next/server';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, setDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '@/services/firebaseInit';
 import { Post } from '@/constants/interfaces-local';
 
@@ -36,8 +36,19 @@ export const POST = async (req: NextRequest) => {
 		const body = await req.json();
 
 		if (!postId) {
-			throw new Error('No hay postID');
+            const {autor, category, content, image, title} = body
+            if(!autor || !category || !content || !image || !title){
+				return NextResponse.json({error: 'Se deben ingresar todas las propiedades del post'});
+            }
+            const newDocRef = doc(collection(db, 'posts'));
+            const newPost: Post = {
+				id: newDocRef.id,
+				autor, category, content, image, title,
+			};
+			await setDoc(newDocRef, newPost);
+			return NextResponse.json(newPost);
 		}
+
 		const docRef = doc(db, 'posts', postId);
 		const findDoc = await getDoc(docRef);
 		const parsePost = findDoc.data();
@@ -59,6 +70,18 @@ export const POST = async (req: NextRequest) => {
 			console.log(error.message);
 			return NextResponse.json(null);
 		}
+		console.log(error);
 		return NextResponse.json(error);
 	}
 };
+
+export const DELETE = async (req: NextRequest) => {
+	try {
+		const body = await req.json()
+		if(!body.postId) return NextResponse.json({error: 'Falta parámetro postId'})
+		await deleteDoc(doc(db, "posts", body.postId));
+		return NextResponse.json(`Documento id: ${body.postId} eliminado exitosamente`)
+	} catch (error) {
+		return NextResponse.json(error)
+	}
+}
