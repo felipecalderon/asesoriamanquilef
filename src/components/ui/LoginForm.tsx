@@ -1,7 +1,6 @@
 'use client'
 import { Button, Input } from "@nextui-org/react"
 import { ChangeEvent, useState } from "react"
-import { signIn } from "next-auth/react"
 const LoginForm = () => {
     const initialForm = {
         email: '',
@@ -17,11 +16,11 @@ const LoginForm = () => {
     }
 
     const sendForm = async () => {
-        const data = await signIn('credentials', {
+        const data = {
             email: form.email,
             clave: form.clave,
             redirect: false
-        })
+        }
         console.log(data);
     }
     return (

@@ -1,12 +1,13 @@
 'use client'
-import React, { ChangeEvent, useState } from 'react'
-import { Button, Input } from "@nextui-org/react";
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import { Button, Input, Select, SelectItem } from "@nextui-org/react";
 import { editorStore } from '@/store/editorStore'
 import Image from 'next/image';
 import LoadingText from './LoadingText';
 
 const TitleInput = () => {
-  const { title, image, editTitle, editImage } = editorStore();
+  const categories = ['Servicios', 'Noticias']
+  const { title, image, editTitle, editImage, editCategory } = editorStore();
   const [isLoading, setIsLoading] = useState(false); 
 
   const handleButtonChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,6 +35,13 @@ const TitleInput = () => {
       setIsLoading(false); // Finaliza la carga
     }
   };
+  const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    editCategory(e.target.value)
+  }
+
+  useEffect(() => {
+    editCategory(categories[0])
+  }, [])
   return (
     <div className='px-6 pb-3'>
       <div className='flex flex-row gap-3 justify-center items-center'>
@@ -45,7 +53,19 @@ const TitleInput = () => {
           onChange={handleButtonChange}
           value={title}
           className="max-w-[400px] mx-auto my-3"
-        />
+          />
+
+        <Select
+          className="max-w-[400px] mx-auto"
+          label="Selecciona categoría"
+          onChange={handleSelectChange}
+          variant='faded'
+          defaultSelectedKeys={[categories[0]]}
+        >
+            {
+              categories.map(cat => <SelectItem key={cat} value={cat} textValue={cat}> {cat} </SelectItem>)
+            }
+        </Select>
         <div className="container mx-auto p-5">
           <input
             id="image-upload"

@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 const Banner = ({children}: {children: React.ReactNode}) => {
 	return (
-		<div className='relative w-full h-96 md:h-[600px]'>
+		<div className='relative w-full min-h-screen'>
 			<Image
 				alt='Barbara Manquilef Abogada'
 				src='/fondo-edit-asm.jpg'

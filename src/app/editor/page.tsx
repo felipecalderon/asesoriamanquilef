@@ -6,7 +6,7 @@ import TitleInput from '@/components/ui/titleInput'
 const EdicionPage = () => {
   return (
     <>
-    <h2 className='text-center text-2xl py-3'>
+    <h2 className='text-left font-semibold text-2xl py-3 px-6'>
       Creación de publicaciones
     </h2>
     <TitleInput />

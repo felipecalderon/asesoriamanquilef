@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import LoadingText from "./ui/LoadingText";
 
-export default function CreatePostModal({ title, content, image }: { image: string, title: string, content: string }) {
+export default function CreatePostModal({ title, content, image, category }: { image: string, title: string, content: string, category: string }) {
     const router = useRouter()
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [loading, setLoading] = useState(false)
@@ -13,10 +13,12 @@ export default function CreatePostModal({ title, content, image }: { image: stri
         try {
             setLoading(true)
             const data = {
+                id: '',
                 autor: 'Bárbara',
                 title,
                 content,
                 image,
+                category
             }
             await guardarPost(data)
             setLoading(false)

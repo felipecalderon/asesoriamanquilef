@@ -5,7 +5,6 @@ import { Ephesis } from 'next/font/google'
 import { DarkMode } from "./darkmode";
 import { useState } from "react";
 import { convertirCadena } from "@/utils/textoaURL";
-import Boton from "./ui/BotonLogin";
 
 const fuente = Ephesis({ subsets: ["latin"], weight: '400' })
 
@@ -36,10 +35,10 @@ export default function Header() {
                 </NavbarBrand>
             </NavbarContent>
             {/* Menú desktop */}
-            <NavbarContent className="hidden sm:flex gap-8" justify="center">
-                <NavbarBrand>
-                    <Logo className="w-14 drop-shadow-lg"/>
-                    <p className={`${fuente.className} text-3xl md:text-4xl font-semibold text-violet-950 dark:text-violet-100`}>Barbara Manquilef</p>
+            <NavbarContent className="hidden sm:flex justify-between gap-6" justify="center">
+                <NavbarBrand className="space-x-2">
+                    <Logo className="w-12 drop-shadow-lg"/>
+                    <p className={`${fuente.className} text-3xl md:text-4xl font-semibold text-primario dark:text-violet-100`}>Barbara Manquilef</p>
                 </NavbarBrand>
                 {menuItems.map((menu, index) => (
                     <NavbarItem key={`${menu}-${index}`}>
@@ -55,9 +54,6 @@ export default function Header() {
             </NavbarContent>
 
             <NavbarContent justify="end">
-                <NavbarItem>
-                    <Boton />
-                </NavbarItem>
                     <DarkMode />
             </NavbarContent>
             {/* Menú movil */}

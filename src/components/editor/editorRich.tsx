@@ -62,7 +62,7 @@ const QuillEditor = () => {
                 },
             });
 
-            const toolbar = quill.getModule('toolbar');
+            const toolbar: any = quill.getModule('toolbar');
             toolbar.addHandler('image', () => {
                 selectLocalImage(quill);
             });

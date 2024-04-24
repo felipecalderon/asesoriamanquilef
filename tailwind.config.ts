@@ -22,9 +22,11 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-    },
-    animation: {
-      wiggle: 'wiggle 1s ease-in-out infinite',
+      colors: {
+        primario: '#A577F0',
+        primarioClaro: '#EAE0FB',
+        secundarioClaro: '#F4D3CC'
+      }
     },
   },
   plugins: [nextui()],
