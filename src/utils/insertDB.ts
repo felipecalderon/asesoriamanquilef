@@ -1,6 +1,6 @@
 import { collection, doc, setDoc, getDocs, getDoc } from 'firebase/firestore';
 import { db } from '@/services/firebaseInit';
-import { Post } from '@/constants/interfaces-local';
+import { IPost } from '@/constants/interfaces-local';
 
 export const editPost = async (id: string) => {
 	try {
@@ -21,7 +21,7 @@ export const listOfPosts = async () => {
 		const docRefs = collection(db, 'posts');
 		const { docs } = await getDocs(docRefs);
 		// Convertir cada documento en un objeto Post
-		const posts: Post[] = docs.map((doc) => {
+		const posts: IPost[] = docs.map((doc) => {
 			const data = doc.data();
 			return {
 				id: doc.id,
@@ -29,7 +29,7 @@ export const listOfPosts = async () => {
 				content: data.content,
 				title: data.title,
 				image: data.image,
-				category: '',
+				category: data.category,
 			};
 		});
 		return posts;
@@ -45,7 +45,7 @@ export async function guardarPost({
 	title,
 	image,
 	category,
-}: Post) {
+}: IPost) {
 	try {
 		if (!content || content === '') {
 			throw 'No se proporcionó contenido content.';
