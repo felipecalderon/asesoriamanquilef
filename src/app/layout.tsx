@@ -1,11 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import dynamic from 'next/dynamic'
-import Snav from '@/components/skeletons/Snav'
-const inter = Inter({ subsets: ['latin'] })
-const Header = dynamic(() => import('@/components/header'), { ssr: false, loading: () => <Snav /> })
+import Header from '@/components/header'
 
+const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Asesoría Manquilef',
   description: 'Barbara Manquilef - Abogada en Temuco, asesorías legales.',
