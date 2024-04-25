@@ -1,14 +1,14 @@
 'use client'
 import { storePosts } from "@/store/postsStore"
-import Post from "./posts/single-post"
+import Service from "./service"
 
-export default function Noticias() {
+export default function Servicios() {
     const { posts } = storePosts()
-    const filterPosts = posts.filter((post) => post.category === 'Noticias')
-
+    const filterPosts = posts.filter((post) => post.category === 'Servicios')
+    
     if(filterPosts.length > 0) return (
         <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-            { filterPosts.map((post) => <Post post={post} />)}
+            { filterPosts.map((post) => <Service post={post} />)}
         </div>
     )
     return null

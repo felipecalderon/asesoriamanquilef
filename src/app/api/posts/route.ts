@@ -1,8 +1,7 @@
-import { listOfPosts } from '@/utils/insertDB';
 import { NextRequest, NextResponse } from 'next/server';
-import { collection, doc, getDoc, setDoc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, setDoc, updateDoc, deleteDoc, getDocs } from 'firebase/firestore';
 import { db } from '@/services/firebaseInit';
-import { Post } from '@/constants/interfaces-local';
+import { IPost } from '@/constants/interfaces-local';
 
 export const GET = async (req: NextRequest) => {
 	const url = req.nextUrl;
@@ -14,7 +13,7 @@ export const GET = async (req: NextRequest) => {
 		if (!parsePost) {
 			return NextResponse.json(null);
 		}
-		const finalPost: Post = {
+		const finalPost: IPost = {
 			id: postId,
 			autor: parsePost.autor,
 			category: parsePost.category,
@@ -24,7 +23,20 @@ export const GET = async (req: NextRequest) => {
 		};
 		return NextResponse.json(finalPost);
 	} else {
-		const posts = await listOfPosts();
+		const docRefs = collection(db, 'posts');
+		const { docs } = await getDocs(docRefs);
+		// Convertir cada documento en un objeto Post
+		const posts: IPost[] = docs.map((doc) => {
+			const data = doc.data();
+			return {
+				id: doc.id,
+				autor: data.autor,
+				content: data.content,
+				title: data.title,
+				image: data.image,
+				category: data.category,
+			};
+		});
 		return NextResponse.json(posts);
 	}
 };
@@ -41,7 +53,7 @@ export const POST = async (req: NextRequest) => {
 				return NextResponse.json({error: 'Se deben ingresar todas las propiedades del post'});
             }
             const newDocRef = doc(collection(db, 'posts'));
-            const newPost: Post = {
+            const newPost: IPost = {
 				id: newDocRef.id,
 				autor, category, content, image, title,
 			};
@@ -55,7 +67,7 @@ export const POST = async (req: NextRequest) => {
 		if (!parsePost) {
 			return NextResponse.json(null);
 		}
-		const finalPost: Partial<Post> = {
+		const finalPost: Partial<IPost> = {
 			id: postId,
 			autor: body.autor || parsePost.autor,
 			category: body.category || parsePost.category,

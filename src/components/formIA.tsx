@@ -1,12 +1,11 @@
 'use client'
 import React, { useEffect, useState } from "react"
 import { counterStore } from "@/store/counterStore";
-import { getCounterLocal } from "@/utils/counterLocal";
 import ChatInputForm from "./chatForm";
 import { FaRegFilePdf } from "react-icons/fa";
 import useSocket from "@/hooks/useSocket";
 import LoadingText from "./ui/LoadingText";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import { Modal, ModalContent, Button, useDisclosure } from "@nextui-org/react";
 import { BiSolidMessageDetail } from "react-icons/bi";
 import { FaWindowClose } from "react-icons/fa";
 
@@ -59,8 +58,6 @@ const FormIA = () => {
             return () => clearInterval(intervalId);
         }
     }, [historial]);
-
-    useEffect(() => setCounter(getCounterLocal()), [])
 
     useEffect(() => {
         const mensajeInicial = 'Hola, soy un asistente legal avanzado, hazme preguntas completas y directas...'

@@ -1,8 +1,8 @@
-export interface Post {
+export interface IPost {
 	id: string;
 	autor: string;
 	content: string;
 	title: string;
 	image: string;
-	category: string;
+	category: 'Noticias' | 'Servicios';
 }

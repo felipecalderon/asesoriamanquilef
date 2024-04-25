@@ -1,16 +1,17 @@
 'use client'
+import { IPost } from "@/constants/interfaces-local";
 import { Card, CardHeader, CardBody, Image, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 
-export default function Service({ autor, content, id, title, image }: { autor: string, content: string, id: string, title: string, image: string }) {
+export default function Service({ post }: {post: IPost}) {
+    const { autor, content, id, title, image } = post
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     return (
         <>
             <Card className="py-4 w-[250px] bg-secundarioClaro min-h-[370px]" isPressable onPress={onOpen}>
                 <CardHeader className="pb-0 pt-2 px-4 flex-col items-center justify-center">
-                    <p className="text-tiny italic text-slate-600">{autor}</p>
                     <h4 className="font-semibold text-large text-slate-800 text-pretty">{title}</h4>
                 </CardHeader>
-                <CardBody className="overflow-visible flex flex-row justify-center items-center">
+                <CardBody className="overflow-visible flex flex-col justify-center items-center">
                     <Image
                         className="object-cover rounded-full h-52 w-52"
                         alt="Card background"
@@ -18,6 +19,7 @@ export default function Service({ autor, content, id, title, image }: { autor: s
                         width={250}
                         height={250}
                     />
+                    <p className="text-tiny italic text-slate-600 pt-3 text-center">{autor}</p>
                 </CardBody>
             </Card>
             <Modal

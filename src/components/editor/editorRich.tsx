@@ -14,7 +14,7 @@ const toolbarOptions = [
     ['link', 'image'] // enlaces e imágenes
 ];
 
-const QuillEditor = () => {
+const QuillEditor = ({content}: {content: string}) => {
     const quillRef = useRef(null);
     const { editContent } = editorStore()
     const selectLocalImage = async (quill: Quill) => {
@@ -61,7 +61,7 @@ const QuillEditor = () => {
                     toolbar: toolbarOptions,
                 },
             });
-
+            quill.root.innerHTML = content;
             const toolbar: any = quill.getModule('toolbar');
             toolbar.addHandler('image', () => {
                 selectLocalImage(quill);
@@ -79,10 +79,10 @@ const QuillEditor = () => {
                 quillRef.current = null; // Limpieza de la referencia
             }
         };
-    }, []); // Revisa si necesitas agregar dependencias aquí
+    }, []);
 
     return (
-		<div className='bg-white mx-6'>
+		<div className='bg-white'>
 			<div ref={quillRef}/>
 		</div>
 	)

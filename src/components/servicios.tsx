@@ -6,7 +6,7 @@ import { FaRegistered } from "react-icons/fa6";
 import { listas } from "@/constants/listaServicios";
 import { PiButterflyFill } from "react-icons/pi";
 
-const Servicios = () => {
+const ServiciosIconos = () => {
   const servicios = [
     { buttonText: "Derecho de Familia", Icono: MdFamilyRestroom, lista: listas.familia },
     { buttonText: "Derecho Animal", Icono: GiCat, lista: listas.animal },
@@ -28,4 +28,4 @@ const Servicios = () => {
   )
 }
 
-export default Servicios
+export default ServiciosIconos
