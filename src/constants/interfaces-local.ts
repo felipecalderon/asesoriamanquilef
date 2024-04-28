@@ -1,6 +1,6 @@
 export interface IPost {
 	id: string;
-	autor: string;
+	subtitle: string;
 	content: string;
 	title: string;
 	image: string;

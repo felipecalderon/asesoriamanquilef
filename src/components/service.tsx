@@ -3,7 +3,7 @@ import { IPost } from "@/constants/interfaces-local";
 import { Card, CardHeader, CardBody, Image, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 
 export default function Service({ post }: {post: IPost}) {
-    const { autor, content, id, title, image } = post
+    const { subtitle, content, id, title, image } = post
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     return (
         <>
@@ -19,7 +19,7 @@ export default function Service({ post }: {post: IPost}) {
                         width={250}
                         height={250}
                     />
-                    <p className="text-tiny italic text-slate-600 pt-3 text-center">{autor}</p>
+                    <p className="text-tiny italic text-slate-600 pt-3 text-center">{subtitle}</p>
                 </CardBody>
             </Card>
             <Modal

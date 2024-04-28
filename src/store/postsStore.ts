@@ -1,6 +1,13 @@
+import { envVars } from '@/constants/env-vars';
 import { IPost } from '@/constants/interfaces-local';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+
+interface ResponseBack {
+    mesaage: string
+    error: string | null
+    data: IPost[]
+}
 
 interface ListOfPost {
 	posts: IPost[];
@@ -8,14 +15,13 @@ interface ListOfPost {
     updatePost: (post: IPost) => void 
     filterPost: (postId: string) => void
 }
-
+const { back_url } = envVars
 export const storePosts = create(persist<ListOfPost>((set, get) => ({
     posts: [],
     getPosts: async () => {
-        const fetchPosts = await fetch(`/api/posts`, {cache: 'no-store'})
-        const parsePosts: IPost[] = await fetchPosts.json()
-        console.log({parsePosts});
-        set({posts: parsePosts})
+        const fetchPosts = await fetch(`${back_url}/api/post`, {cache: 'no-store'})
+        const parsePosts: ResponseBack = await fetchPosts.json()
+        set({posts: parsePosts.data})
     },
     updatePost: async (newPost) => {
         const { posts } = get()

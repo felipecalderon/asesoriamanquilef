@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.ql-toolbar {
-    display: flex;
-    justify-content: center; 
-    background-color: lightpink;
-}
-
-@media (max-width: 600px) {
-  .ql-toolbar {
-    flex-wrap: wrap; /* Permite que los elementos del toolbar se ajusten en múltiples filas */
-  }
-  .ql-toolbar .ql-formats {
-    margin-right: 1px; /* Reduce el margen para ahorrar espacio */
-    margin-top: 5px;
-  }
+.tox .tox-dialog {
+  z-index: 51 !important;
 }

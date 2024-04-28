@@ -16,7 +16,7 @@ export const ClientModal = ({isOpen, onOpenChange, post}: {isOpen: boolean, onOp
                                 {post.title}
                             </ModalHeader>
                             <ModalBody>
-                                <div className="ql-editor" dangerouslySetInnerHTML={{ __html: post.content }}></div>
+                                <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="danger" variant="light" onPress={onClose}>
