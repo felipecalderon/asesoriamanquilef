@@ -42,7 +42,6 @@ export default function PostPage({ params }: { params: { postId: string } }) {
             });
 
             const urlResponse = await postData.json();
-            console.log(urlResponse);
             editImage(urlResponse.secure_url)
         } catch (error) {
             console.error('Error al cargar la imagen:', error);
@@ -51,10 +50,10 @@ export default function PostPage({ params }: { params: { postId: string } }) {
         }
     };
 
-    const saveData = async (post: IPost) => {
+    const saveData = async (post: Partial<IPost>) => {
         try {
             setError(null)
-            const fetchUpdatePost = await fetch(`${back_url}/api/post?postId=${post.id}`, {
+            const fetchUpdatePost = await fetch(`${back_url}/api/post?postId=${params.postId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -63,10 +62,8 @@ export default function PostPage({ params }: { params: { postId: string } }) {
             })
             const editedPost: ResponseBackPost = await fetchUpdatePost.json()
             if (editedPost.error) {
-                console.log(editedPost);
                 setError(editedPost.error)
             } else {
-                console.log(editedPost);
                 router.push('/posts')
                 updatePost(editedPost.data)
             }
@@ -93,7 +90,6 @@ export default function PostPage({ params }: { params: { postId: string } }) {
         }
     }
 
-    
     useEffect(() => {
         if (findPost) {
             editContent(findPost.content)
@@ -147,7 +143,7 @@ export default function PostPage({ params }: { params: { postId: string } }) {
                 <Button color="danger" variant="solid" onPress={() => deletePost(findPost.id)}>
                     Eliminar (acción irreversible)
                 </Button>
-                <Button color="primary" variant="solid" onPress={() => saveData(findPost)}>
+                <Button color="primary" variant="solid" onPress={() => saveData({category, content, image, subtitle, title} as IPost)}>
                     Guardar Edición
                 </Button>
             </div>

@@ -25,21 +25,22 @@ export default function Header() {
             className="h-24"
         >
             <NavbarContent className="sm:hidden">
-                <NavbarMenuToggle className="w-fit" aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
-            </NavbarContent>
-
-            <NavbarContent className="sm:hidden" justify="center">
+                <NavbarMenuToggle className="mr-3" aria-label={isMenuOpen ? "Cerrar" : "Abrir"} />
                 <NavbarBrand>
-                    <Logo className="w-10 drop-shadow-lg"/>
-                    <p className={`${fuente.className} text-xl sm:text-2xl md:text-5xl font-semibold text-violet-950 dark:text-violet-100`}>Barbara Manquilef</p>
+                    <Link href="/" className="cursor-pointer flex flex-row gap-3">
+                        <Logo className="w-12 drop-shadow-lg" />
+                        <p className={`${fuente.className} text-2xl font-semibold text-violet-950 dark:text-violet-100`}>Barbara Manquilef</p>
+                    </Link>
                 </NavbarBrand>
             </NavbarContent>
             {/* Menú desktop */}
             <NavbarContent className="hidden sm:flex justify-between gap-6" justify="center">
-                <NavbarBrand className="space-x-2">
-                    <Logo className="w-12 drop-shadow-lg"/>
-                    <p className={`${fuente.className} text-3xl md:text-4xl font-semibold text-primario dark:text-violet-100`}>Barbara Manquilef</p>
-                </NavbarBrand>
+                <Link href="/" className="cursor-pointer">
+                    <NavbarBrand className="space-x-2">
+                        <Logo className="w-12 drop-shadow-lg" />
+                        <p className={`${fuente.className} text-3xl md:text-4xl font-semibold text-primario dark:text-violet-100`}>Barbara Manquilef</p>
+                    </NavbarBrand>
+                </Link>
                 {menuItems.map((menu, index) => (
                     <NavbarItem key={`${menu}-${index}`}>
                         <Link
@@ -53,9 +54,6 @@ export default function Header() {
                 ))}
             </NavbarContent>
 
-            <NavbarContent justify="end">
-                    <DarkMode />
-            </NavbarContent>
             {/* Menú movil */}
             <NavbarMenu>
                 {menuItems.map((menu, index) => (
@@ -71,6 +69,7 @@ export default function Header() {
                     </NavbarMenuItem>
                 ))}
             </NavbarMenu>
+            <DarkMode />
         </Navbar>
     );
 }

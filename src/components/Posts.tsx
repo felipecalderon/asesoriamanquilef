@@ -8,7 +8,7 @@ export default function Noticias() {
 
     if(filterPosts.length > 0) return (
         <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-            { filterPosts.map((post) => <SinglePost post={post} />)}
+            { filterPosts.map((post) => <SinglePost key={post.id} post={post} />)}
         </div>
     )
     return null
