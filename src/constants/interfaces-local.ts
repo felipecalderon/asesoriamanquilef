@@ -7,7 +7,8 @@ export interface IPost {
 	category: 'Noticias' | 'Servicios';
 }
 
-export interface Historial {
-    consulta?: string
-    respuesta?: string
+export interface MensajeGPT {
+    role: 'user' | 'system'
+    content: string
 }
+
