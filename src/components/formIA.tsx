@@ -34,7 +34,7 @@ const FormIA = () => {
     }
 
     const sendWSP = () => {
-        window.open('https://wa.me/56982853280?text=Buen+d%C3%ADa+busco+asesor%C3%ADa+jur%C3%ADdica', '_blank')
+        window.open('https://wa.me/56229797600?text=Buen+d%C3%ADa+busco+asesor%C3%ADa+jur%C3%ADdica', '_blank')
     }
     useEffect(() => {
         const ultimoHistorial = historial[historial.length - 1]; // Acceder al último elemento de historial
