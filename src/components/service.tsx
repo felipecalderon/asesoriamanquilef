@@ -7,15 +7,15 @@ export default function Service({ post }: { post: IPost }) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     return (
         <>
-            <Card className="bg-secundarioClaro min-h-[350px] flex flex-col justify-center items-center" isPressable onPress={onOpen}>
-                <h4 className="pb-2 font-semibold text-large text-slate-800 text-pretty">{title}</h4>
+            <Card className="bg-primario/30 flex flex-col justify-start rounded-t-full rounded-b-[10px] py-2 sm:py-6 sm:rounded-lg items-center" isPressable onPress={onOpen}>
                 <Image
-                    className="object-cover rounded-full h-52 w-52"
+                    className="object-cover rounded-full h-40 w-40"
                     alt="Card background"
                     src={image}
                     width={250}
                     height={250}
                 />
+                <h4 className="pt-2 font-semibold text-large text-slate-800 text-pretty">{title}</h4>
                 <p className="text-tiny italic text-slate-600 pt-3 text-center">{subtitle}</p>
             </Card>
             <Modal
