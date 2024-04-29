@@ -5,11 +5,12 @@ import ChatInputForm from "./chatForm";
 import { FaRegFilePdf } from "react-icons/fa";
 import useSocket from "@/hooks/useSocket";
 import LoadingText from "./ui/LoadingText";
-import { Modal, ModalContent, Button, useDisclosure } from "@nextui-org/react";
+import { Modal, ModalContent, Button, useDisclosure, ScrollShadow } from "@nextui-org/react";
 import { BiSolidMessageDetail } from "react-icons/bi";
 import { FaWindowClose } from "react-icons/fa";
 import { RiWhatsappFill } from "react-icons/ri";
 import { useRouter } from "next/navigation";
+import { Historial } from "@/constants/interfaces-local";
 
 const FormIA = () => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -76,6 +77,8 @@ const FormIA = () => {
             </div>
             <Modal scrollBehavior='inside' isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false} closeButton={<div><FaWindowClose className='text-xl text-red-600 dark:text-white' /></div>}>
                 <ModalContent className="bg-white dark:bg-violet-950">
+                    <ScrollShadow hideScrollBar>
+
                     {historial.map((item, index) => {
                         return (
                             <div key={index} className="mb-2 px-9 pt-2">
@@ -89,13 +92,13 @@ const FormIA = () => {
                             </div>
                         )
                     })}
-                    {urlDoc && <div className="bg-fuchsia-200 text-gray-700 text-sm text-right mb-1 px-2 py-1 w-fit ml-auto rounded-s-lg rounded-t-lg dark:bg-fuchsia-800 dark:text-white max-w-xs">Usa esto como una guía base, NO es para aplicarlo directamente:
+                    {loading && <LoadingText />}
+                    </ScrollShadow>
+                    {/* {urlDoc && <div className="bg-fuchsia-200 text-gray-700 text-sm text-right mb-1 px-2 py-1 w-fit ml-auto rounded-s-lg rounded-t-lg dark:bg-fuchsia-800 dark:text-white max-w-xs">Usa esto como una guía base, NO es para aplicarlo directamente:
                         <Button className="text-xs mt-3 mx-1 h-fit py-1 text-violet-950 dark:text-white bg-fuchsia-300 dark:bg-fuchsia-950 hover:bg-opacity-90 transition-all" onClick={() => downloadDoc(urlDoc)}>
                             Ver documento <FaRegFilePdf className="text-lg text-violet-900 dark:text-white" />
                         </Button>
-                    </div>
-                    }
-                    {loading && <LoadingText />}
+                    </div>} */}
                     <ChatInputForm
                         query={query}
                         setQuery={setQ}

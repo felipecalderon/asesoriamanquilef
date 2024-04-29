@@ -6,3 +6,8 @@ export interface IPost {
 	image: string;
 	category: 'Noticias' | 'Servicios';
 }
+
+export interface Historial {
+    consulta?: string
+    respuesta?: string
+}

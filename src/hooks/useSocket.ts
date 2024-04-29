@@ -2,11 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import io, { Socket } from 'socket.io-client';
 import { DefaultEventsMap } from "@socket.io/component-emitter";
 import { envVars } from '@/constants/env-vars';
-
-interface Historial {
-    consulta?: string
-    respuesta?: string
-}
+import { Historial } from '@/constants/interfaces-local';
 
 const useSocket = () => {
     const { back_url } = envVars
