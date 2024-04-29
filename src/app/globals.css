@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-.tox .tox-dialog {
-  z-index: 51 !important;
+/* ESTILOS VISUALES DEL EDITOR TINYMCE */
+/* Estilo base listas */
+.html_tinymce > ul {
+  list-style: disc;
+  padding-left: 3%;
+}
+
+/* Estilo base para el acordeón */
+details {
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+/* Estilo para el summary */
+details > summary {
+  background-color: #f9f9f9;
+  padding: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+details > summary::marker {
+  color: blueviolet;
+}
+
+/* Estilos para el panel que se expande/colapsa */
+details > p {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-in-out;
+}
+
+/* Estilo cuando el acordeón está abierto */
+details[open] p {
+  max-height: 500px;
+  padding: 10px;
+  transition: max-height 0.5s ease-out;
 }

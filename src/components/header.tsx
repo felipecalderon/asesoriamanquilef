@@ -4,18 +4,12 @@ import Logo from "./logo";
 import { Ephesis } from 'next/font/google'
 import { DarkMode } from "./darkmode";
 import { useState } from "react";
-import { convertirCadena } from "@/utils/textoaURL";
+import { menuItems } from "@/constants/menu";
 
 const fuente = Ephesis({ subsets: ["latin"], weight: '400' })
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const menuItems = [
-        "Servicios Jurídicos",
-        "Artículos informativos",
-        "Acerca de mí",
-    ];
 
     return (
         <Navbar
@@ -41,14 +35,14 @@ export default function Header() {
                         <p className={`${fuente.className} text-3xl md:text-4xl font-semibold text-primario dark:text-violet-100`}>Barbara Manquilef</p>
                     </NavbarBrand>
                 </Link>
-                {menuItems.map((menu, index) => (
-                    <NavbarItem key={`${menu}-${index}`}>
+                {menuItems.map((menu) => (
+                    <NavbarItem key={menu.name}>
                         <Link
                             color='foreground'
-                            href="#"
+                            href={menu.link}
                             size="sm"
                         >
-                            {menu}
+                            {menu.name}
                         </Link>
                     </NavbarItem>
                 ))}
@@ -56,15 +50,15 @@ export default function Header() {
 
             {/* Menú movil */}
             <NavbarMenu>
-                {menuItems.map((menu, index) => (
-                    <NavbarMenuItem key={`${menu}-${index}`}>
+                {menuItems.map((menu) => (
+                    <NavbarMenuItem key={menu.name}>
                         <Link
                             className="w-full pt-6 z-20"
                             color='foreground'
-                            href={convertirCadena(menu)}
+                            href={menu.link}
                             size="lg"
                         >
-                            {menu}
+                            {menu.name}
                         </Link>
                     </NavbarMenuItem>
                 ))}

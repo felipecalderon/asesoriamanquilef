@@ -34,10 +34,10 @@ export default function PostsPage() {
           aria-label="posts"
           subtitle="Muestra u oculta las publicaciones haciendo clic aquí"
           title="Servicios & Noticias">
-          <div className="grid grid-cols-3 justify-items-center mt-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 justify-items-center mt-6 gap-2 md:gap-4">
             {
               posts.map(post => (
-                <Card key={post.id} className="py-2 w-fit max-w-xs bg-secundarioClaro min-h-[370px]" isPressable onPress={() => redirectToPost(post.id)}>
+                <Card key={post.id} className="py-2 w-fit max-w-xs bg-secundarioClaro min-h-[300px]" isPressable onPress={() => redirectToPost(post.id)}>
                   <CardHeader className="pb-0 pt-2 px-4 flex-col items-center justify-center">
                     <p className="text-tiny italic text-slate-600">{post.subtitle}</p>
                     <h4 className="font-semibold text-large text-primario">{post.title}</h4>

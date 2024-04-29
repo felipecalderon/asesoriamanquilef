@@ -16,11 +16,11 @@ export default function Home() {
     <div className="min-h-screen">
       <BannerOpcional />
       <div className="z-10 relative">
-        <div className="py-10">
+        <div className="py-10 px-3">
           <Servicios />
         </div>
-        <Posts />
       </div>
+        {/* <Posts /> */}
       <div className="z-10 relative">
         <FormIA />
         <BGFigura />

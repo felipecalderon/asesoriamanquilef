@@ -37,7 +37,7 @@ export default function CreateNewPost({ changeSelect }: { changeSelect?: Dispatc
     const createPost = async (post: Partial<IPost>) => {
         try {
             setError(null)
-            const fetchUpdatePost = await fetch(`${back_url}/api/post?postId=${post.id}`, {
+            const fetchUpdatePost = await fetch(`${back_url}/api/post`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -46,19 +46,17 @@ export default function CreateNewPost({ changeSelect }: { changeSelect?: Dispatc
             })
             const editedPost: ResponseBackPost = await fetchUpdatePost.json()
             if (editedPost.error) {
-                console.log(editedPost);
                 setError(editedPost.error)
             } else {
                 updatePost(editedPost.data)
                 if (changeSelect) {
                     changeSelect(new Set(["2"]))
+                    cleanEditor()
                 }
             }
 
         } catch (error) {
             console.error(error)
-        } finally {
-            cleanEditor()
         }
     }
 

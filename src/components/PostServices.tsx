@@ -7,7 +7,7 @@ export default function Servicios() {
     const filterPosts = posts.filter((post) => post.category === 'Servicios')
     
     if(filterPosts.length > 0) return (
-        <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
             { filterPosts.map((post) => <Service key={post.id} post={post} />)}
         </div>
     )
