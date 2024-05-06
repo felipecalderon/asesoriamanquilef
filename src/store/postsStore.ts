@@ -20,8 +20,12 @@ export const storePosts = create(persist<ListOfPost>((set, get) => ({
     posts: [],
     getPosts: async () => {
         const fetchPosts = await fetch(`${back_url}/api/post`, {cache: 'no-store'})
-        const parsePosts: ResponseBack = await fetchPosts.json()
-        set({posts: parsePosts.data})
+        if(fetchPosts.ok){
+            const parsePosts: ResponseBack = await fetchPosts.json()
+            set({posts: parsePosts.data})
+        }else{
+            console.log(fetchPosts);
+        }
     },
     updatePost: async (newPost) => {
         const { posts } = get()
