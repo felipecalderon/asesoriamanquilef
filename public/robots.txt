@@ -1,0 +1,6 @@
+# BLOQUEA POSTS EDITOR
+Disallow: /posts
+
+# PERMITE ACCESO AL HOME
+User-agent: *
+Allow: /
