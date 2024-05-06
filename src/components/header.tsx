@@ -5,18 +5,18 @@ import { Ephesis } from 'next/font/google'
 import { DarkMode } from "./darkmode";
 import { useState } from "react";
 import { menuItems } from "@/constants/menu";
+import UTM from "@/components/utmCard";
 
 const fuente = Ephesis({ subsets: ["latin"], weight: '400' })
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
     return (
         <Navbar
             isBordered
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
-            className="h-24"
+            className="h-28"
         >
             <NavbarContent className="sm:hidden">
                 <NavbarMenuToggle className="mr-3" aria-label={isMenuOpen ? "Cerrar" : "Abrir"} />
@@ -64,6 +64,7 @@ export default function Header() {
                 ))}
             </NavbarMenu>
             <DarkMode />
+            <UTM />
         </Navbar>
     );
 }
