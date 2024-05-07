@@ -1,32 +1,42 @@
 export const cursosOtros = [
     {
-        fecha: 2023,
-        institucion: 'UNIVERSIDAD DE CHILE.', 
+        institucion: 'Corte Suprema de Chile.',
+        detalle: 'Título de Abogada', 
+    },
+    {
+        institucion: 'Universidad Católica de Temuco.', 
+        detalle: 'Licenciatura en Ciencias Jurídicas'
+    },
+    {
+        institucion: 'Municipalidad Padre Las Casas', 
+        detalle: 'Ex-funcionaria en Tenencia Responsable de Mascotas.'
+    },
+    {
+        institucion: 'Universidad del Museo Social Argentino, Argentina', 
+        detalle: 'Diplomatura Internacional de Derecho Animal.'
+    },
+    {
+        institucion: 'Centro de Estudios de Derecho Animal CEDA Chile', 
+        detalle: 'Curso de Derecho Animal Chileno.'
+    },
+    {
+        institucion: 'Universidad de Chile', 
         detalle: 'Curso de actualización de Gestión Municipal y Aplicación de la Ley N°21.020 sobre Tenencia Responsable.'
     },
     {
-        fecha: 2022,
-        institucion: 'UNIVERSIDAD DE CONCEPCIÓN.', 
+        institucion: 'Universidad de Concepción', 
         detalle: 'Curso de Derecho Animal Chileno Aplicado.'
     },
     {
-        fecha: 2022,
-        institucion: 'PROFESOR ISMAEL GONZÁLEZ', 
-        detalle: 'Curso de Actualización Concursal: Reformas a la  Ley N° 21.720.'
+        institucion: 'Prof. Ismael González', 
+        detalle: 'Curso de Actualización Concursal: Reformas a la Ley N° 21.720.'
     },
     {
-        fecha: 2022,
-        institucion: 'SEMINARIO INTERNACIONAL UNIVERSIDAD NACIONAL DE LOMAS DE ZAMORA, ARGENTINA.', 
+        institucion: 'Universidad Nacional de Lomas de Zamora, Argentina', 
         detalle: 'Participación Seminario Derecho Constitucional y Animales no Humanos.'
     },
     {
-        fecha: 2021,
-        institucion: 'FUNDACIÓN ABOGADOS POR LOS ANIMALES.', 
-        detalle: 'Curso "Agentes de Cambio en Tenencia Responsable".'
+        institucion: 'Oficina Especializada de Familia, Temuco', 
+        detalle: 'Práctica Profesional en Corporación de Asistencia Judicial.'
     },
-    {
-        fecha: 2020,
-        institucion: 'CORPORACIÓN DE ASISTENCIA JUDICIAL, OFICINA ESPECIALIZADA DE FAMILIA, TEMUCO.', 
-        detalle: 'Práctica profesional para obtener el título de Abogado.'
-    },
-].sort((c1, c2) => c1.fecha - c2.fecha)
+]

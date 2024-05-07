@@ -8,6 +8,7 @@ import { IPost } from "@/constants/interfaces-local"
 import { Button, Image, Input, Select, SelectItem } from "@nextui-org/react"
 import { useRouter } from "next/navigation"
 import { RiArrowGoBackFill } from "react-icons/ri";
+import { Toaster, toast } from 'sonner';
 
 const categories = ['Servicios', 'Noticias']
 const { back_url } = envVars
@@ -64,7 +65,8 @@ export default function PostPage({ params }: { params: { postId: string } }) {
             if (editedPost.error) {
                 setError(editedPost.error)
             } else {
-                router.push('/posts')
+                // router.push('/posts')
+                toast('Post actualizado')
                 updatePost(editedPost.data)
             }
 
@@ -109,6 +111,7 @@ export default function PostPage({ params }: { params: { postId: string } }) {
 
     if (findPost) return (
         <div className="max-w-2xl mx-auto py-3 px-6">
+            <Toaster />
             <div className="flex flex-col gap-1 pb-3">
                 <div className="flex flex-row gap-3 items-center">
                     <RiArrowGoBackFill
@@ -139,8 +142,8 @@ export default function PostPage({ params }: { params: { postId: string } }) {
                 </Select>
                 <EditorWYSWYG key={findPost.id} content={findPost.content} />
             </div>
-            <div className="flex flex-row justify-between">
-                <Button color="danger" variant="solid" onPress={() => deletePost(findPost.id)}>
+            <div className="flex flex-row justify-between items-center py-3">
+                <Button color="danger" variant="solid" size="sm" onPress={() => deletePost(findPost.id)}>
                     Eliminar (acción irreversible)
                 </Button>
                 <Button color="primary" variant="solid" onPress={() => saveData({category, content, image, subtitle, title} as IPost)}>

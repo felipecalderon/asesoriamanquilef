@@ -63,7 +63,7 @@ export default function Header() {
                     </NavbarMenuItem>
                 ))}
             </NavbarMenu>
-            <DarkMode />
+            {/* <DarkMode /> */}
             <UTM />
         </Navbar>
     );
