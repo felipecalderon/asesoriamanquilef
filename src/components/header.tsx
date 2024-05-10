@@ -49,11 +49,11 @@ export default function Header() {
             </NavbarContent>
 
             {/* Menú movil */}
-            <NavbarMenu>
+            <NavbarMenu className="pt-9 items-center">
                 {menuItems.map((menu) => (
                     <NavbarMenuItem key={menu.name}>
                         <Link
-                            className="w-full pt-6 z-20"
+                            className="w-fit py-6 px-4 bg-primario/20 rounded-lg"
                             color='foreground'
                             href={menu.link}
                             size="lg"
@@ -62,9 +62,14 @@ export default function Header() {
                         </Link>
                     </NavbarMenuItem>
                 ))}
+                <div className="block md:hidden mt-auto mb-3">
+                    <UTM />
+                </div>
             </NavbarMenu>
             {/* <DarkMode /> */}
-            <UTM />
+            <div className="hidden md:block">
+                <UTM />
+            </div>
         </Navbar>
     );
 }
