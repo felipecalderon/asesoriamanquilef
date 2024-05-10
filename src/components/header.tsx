@@ -16,7 +16,6 @@ export default function Header() {
             isBordered
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
-            className="h-28"
         >
             <NavbarContent className="sm:hidden">
                 <NavbarMenuToggle className="mr-3" aria-label={isMenuOpen ? "Cerrar" : "Abrir"} />
@@ -62,14 +61,11 @@ export default function Header() {
                         </Link>
                     </NavbarMenuItem>
                 ))}
-                <div className="block md:hidden mt-auto mb-3">
+                <div className="block md:hidden mt-auto mb-16">
                     <UTM />
                 </div>
             </NavbarMenu>
             {/* <DarkMode /> */}
-            <div className="hidden md:block">
-                <UTM />
-            </div>
         </Navbar>
     );
 }

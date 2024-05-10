@@ -68,7 +68,7 @@ const FormIA = () => {
                     Asesoría virtual <BiSolidMessageDetail className='text-2xl text-fuchsia-50 mb-1 animate-wiggle' />
                 </Button>
             </div>
-            <Modal scrollBehavior='inside' size="xl" isOpen={isOpen} onOpenChange={onOpenChange} closeButton={<div><FaWindowClose className='text-xl text-red-600 dark:text-white' /></div>}>
+            <Modal scrollBehavior='outside' size="xl" isOpen={isOpen} onOpenChange={onOpenChange} closeButton={<div><FaWindowClose className='text-xl text-red-600 dark:text-white z-50' /></div>}>
                 <ModalContent className="bg-white dark:bg-violet-950">
                     <ScrollShadow hideScrollBar>
                         {

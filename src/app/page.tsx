@@ -2,16 +2,21 @@
 import BGFigura from "@/components/figura-background";
 import FormIA from "@/components/formIA";
 import Servicios from "@/components/PostServices";
-import Posts from "@/components/Posts";
 import BannerOpcional from "@/components/bannerv2";
 import { useEffect } from "react";
 import { storePosts } from "@/store/postsStore";
 import { Tooltip } from "@nextui-org/react";
+import UTM from "@/components/utmCard";
+import { getIndicadores } from "@/utils/getIndicadores";
+import { indicadoresStore } from "@/store/indicadores";
 
 export default function Home() {
   const { getPosts } = storePosts()
+  const { setIndicadores } = indicadoresStore()
   useEffect(() => {
     getPosts()
+    getIndicadores()
+      .then(res => setIndicadores(res))
   }, [])
   return (
     <div className="min-h-screen pb-10">
@@ -33,7 +38,9 @@ export default function Home() {
           <Servicios />
         </div>
       </div>
-      {/* <Posts /> */}
+      <div className="hidden md:block max-w-sm mx-auto">
+        <UTM />
+      </div>
       <div className="z-10 relative">
         <FormIA />
         <BGFigura />
