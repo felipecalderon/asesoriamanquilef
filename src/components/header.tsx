@@ -3,14 +3,25 @@ import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, Navb
 import Logo from "./logo";
 import { Ephesis } from 'next/font/google'
 import { DarkMode } from "./darkmode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { menuItems } from "@/constants/menu";
 import UTM from "@/components/utmCard";
+import { getIndicadores } from "@/utils/getIndicadores";
+import { indicadoresStore } from "@/store/indicadores";
+import { storePosts } from "@/store/postsStore";
 
 const fuente = Ephesis({ subsets: ["latin"], weight: '400' })
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { setIndicadores } = indicadoresStore()
+    const { getPosts } = storePosts()
+    
+    useEffect(() => {
+        getPosts()
+        getIndicadores()
+            .then(res => setIndicadores(res))
+    }, [])
     return (
         <Navbar
             isBordered

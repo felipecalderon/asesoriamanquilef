@@ -1,3 +1,4 @@
+'use client'
 import { indicadoresStore } from "@/store/indicadores"
 import { fechaCorta } from "@/utils/fechaFormatos"
 

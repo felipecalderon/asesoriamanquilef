@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/header'
 import Script from 'next/script'
+import UTM from '@/components/utmCard'
 const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Asesoría Manquilef',
@@ -32,6 +33,9 @@ export default function RootLayout({
       <body className='bg-violet-100 dark:bg-violet-900 transition-colors min-h-screen'>
         <Header />
         {children}
+        <div className="hidden md:block max-w-sm mx-auto pb-6">
+          <UTM />
+        </div>
       </body>
     </html>
   )

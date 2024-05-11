@@ -25,7 +25,7 @@ const config: Config = {
       colors: {
         primario: '#A577F0',
         primarioClaro: '#EAE0FB',
-        secundarioClaro: '#F4D3CC'
+        secundarioClaro: '#90e0ef'
       }
     },
   },
