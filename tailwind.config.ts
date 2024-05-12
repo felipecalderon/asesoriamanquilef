@@ -54,9 +54,15 @@ const config: Config = {
         primario: '#A577F0',
         primarioClaro: '#EAE0FB',
         secundarioClaro: '#90e0ef'
-      }
+      },
     },
   },
-  plugins: [nextui()],
+  plugins: [nextui({
+    colors: {
+      primario: '#A577F0',
+      primarioClaro: '#EAE0FB',
+      secundarioClaro: '#90e0ef'
+    }
+  })],
 }
 export default config

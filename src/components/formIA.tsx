@@ -64,11 +64,11 @@ const FormIA = () => {
                 <Button onPress={sendWSP} className="animate-aparecer-arriba-1 rounded-lg shadow-md px-6 pt-2 pb-1 text-sm font-semibold bg-green-700/85 hover:bg-green-800 text-white hover:scale-110 transition-all">
                     Whatsapp <RiWhatsappFill className='text-2xl text-fuchsia-50 mb-1 animate-wiggle' />
                 </Button>
-                <Button onPress={onOpen} className="animate-aparecer-arriba-1 delay-1000 rounded-lg shadow-md px-6 pt-2 pb-1 text-sm font-semibold bg-fuchsia-600/85 hover:bg-fuchsia-500 text-white hover:scale-110 transition-all">
+                <Button onPress={onOpen} className="animate-aparecer-arriba-1 delay-1000 rounded-lg shadow-md px-6 pt-2 pb-1 text-sm font-semibold bg-primario text-white hover:scale-110 transition-all">
                     Asesoría virtual <BiSolidMessageDetail className='text-2xl text-fuchsia-50 mb-1 animate-wiggle' />
                 </Button>
             </div>
-            <Modal scrollBehavior='outside' size="xl" isOpen={isOpen} onOpenChange={onOpenChange} closeButton={<div><FaWindowClose className='text-xl text-red-600 dark:text-white z-50' /></div>}>
+            <Modal backdrop="blur" scrollBehavior='outside' size="xl" isOpen={isOpen} onOpenChange={onOpenChange} closeButton={<div><FaWindowClose className='text-xl text-red-600 dark:text-white z-50' /></div>}>
                 <ModalContent className="bg-white dark:bg-violet-950">
                     <ScrollShadow hideScrollBar>
                         {

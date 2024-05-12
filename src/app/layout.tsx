@@ -30,10 +30,10 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className='bg-violet-100 dark:bg-violet-900 transition-colors min-h-screen'>
+      <body className='bg-gray-50 dark:bg-violet-900 transition-colors min-h-screen pb-6'>
         <Header />
         {children}
-        <div className="hidden md:block max-w-sm mx-auto pb-6">
+        <div className="hidden md:block max-w-sm mx-auto">
           <IndicadoresEc />
         </div>
       </body>
