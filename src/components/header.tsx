@@ -5,7 +5,7 @@ import { Ephesis } from 'next/font/google'
 import { DarkMode } from "./darkmode";
 import { useEffect, useState } from "react";
 import { menuItems } from "@/constants/menu";
-import UTM from "@/components/utmCard";
+import UTM from "@/components/indicadores-economicos";
 import { getIndicadores } from "@/utils/getIndicadores";
 import { indicadoresStore } from "@/store/indicadores";
 import { storePosts } from "@/store/postsStore";

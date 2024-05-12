@@ -2,7 +2,7 @@
 import React from "react";
 import { Card, CardFooter, Image } from "@nextui-org/react";
 
-export default function BannerOpcional() {
+export default function Banner() {
     return (
         <Card
             isFooterBlurred={false}
@@ -15,8 +15,8 @@ export default function BannerOpcional() {
                 className="object-cover rounded-none"
                 src="/fondo-edit-asm.jpg"
             />
-            <CardFooter className="py-0 px-2 w-full absolute bottom-0 md:bottom-auto md:top-10 flex items-center justify-center z-10">
-                <div className="flex flex-col">
+            <CardFooter className="animate-aparecer-abajo-1 py-0 px-2 w-full absolute bottom-0 md:bottom-auto md:top-10 flex items-center justify-center z-10">
+                <div className="animate-aparecer-3 flex flex-col">
                     <p className='text-2xl text-white md:text-5xl py-4 px-6 bg-primario/80 dark:text-white dark:bg-violet-950 dark:bg-opacity-20 rounded-t-2xl'>
                         Servicios Jurídicos
                     </p>

@@ -3,11 +3,11 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/header'
 import Script from 'next/script'
-import UTM from '@/components/utmCard'
+import IndicadoresEc from '@/components/indicadores-economicos'
 const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
-  title: 'Asesoría Manquilef',
-  description: 'Barbara Manquilef - Abogada en Temuco, asesorías legales.',
+  title: 'Asesoría Manquilef - Defensa Legal Estratégica',
+  description: 'Barbara Manquilef, abogada, servicio jurídico eficiente, estratégico y antiespecista en Chile. Asesoramiento personalizado en defensa legal.',
   manifest: '/manifest.json'
 }
 
@@ -34,7 +34,7 @@ export default function RootLayout({
         <Header />
         {children}
         <div className="hidden md:block max-w-sm mx-auto pb-6">
-          <UTM />
+          <IndicadoresEc />
         </div>
       </body>
     </html>

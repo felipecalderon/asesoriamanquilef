@@ -11,11 +11,39 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        'aparecer-1': 'aparecer 1s ease-in-out',
+        'aparecer-2': 'aparecer 2s ease-in-out',
+        'aparecer-3': 'aparecer 3s ease-in-out',
+        'aparecer-arriba-1': 'aparecerDeArriba 1s ease-in-out',
+        'aparecer-abajo-1': 'aparecerDeAbajo 1s ease-in-out',
+      },
       keyframes: {
-        wiggle: {
-          '0%, 100%': { transform: 'rotate(-5deg)' },
-          '50%': { transform: 'rotate(5deg)' },
-        }
+        aparecer: {
+          '0%': { opacity: '0' },
+          '90%': { opacity: '0.9' },
+          '100%': { opacity: '1' },
+        },
+        aparecerDeArriba: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(-30px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
+        },
+        aparecerDeAbajo: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(30px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

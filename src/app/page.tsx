@@ -1,14 +1,13 @@
 'use client'
-import BGFigura from "@/components/figura-background";
-import FormIA from "@/components/formIA";
+import FloatingButtons from "@/components/formIA";
 import Servicios from "@/components/PostServices";
-import BannerOpcional from "@/components/bannerv2";
+import Banner from "@/components/bannerv2";
 import { Tooltip } from "@nextui-org/react";
 
 export default function Home() {
   return (
     <div>
-      <BannerOpcional />
+      <Banner />
       <div className="z-10 relative">
         <div className="py-10 px-3">
           <div className="flex flex-col items-center pb-6">
@@ -27,8 +26,7 @@ export default function Home() {
         </div>
       </div>
       <div className="z-10 relative">
-        <FormIA />
-        <BGFigura />
+        <FloatingButtons />
       </div>
     </div>
   )
