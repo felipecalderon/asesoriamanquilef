@@ -1,12 +1,12 @@
 export const menuItems = [
     {
         name: "Servicios Jurídicos",
-        link: "#"
+        link: "servicios"
     },
-    {
-        name: "Artículos informativos",
-        link: "#"
-    },
+    // {
+    //     name: "Artículos informativos",
+    //     link: "#"
+    // },
     {
         name: "Acerca de mí",
         link: "acercade"

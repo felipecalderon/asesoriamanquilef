@@ -60,11 +60,13 @@ const FormIA = () => {
 
     return (
         <>
-            <div className="fixed bottom-4 right-4 md:bottom-10 md:w-3/12 flex flex-row justify-end gap-3">
-                <Button onPress={sendWSP} className="animate-aparecer-arriba-1 rounded-lg shadow-md px-6 pt-2 pb-1 text-sm font-semibold bg-green-700/85 hover:bg-green-800 text-white hover:scale-110 transition-all">
+            <div className="fixed bottom-4 right-4 md:bottom-10 md:w-3/12 flex flex-row justify-end gap-3 z-50">
+                <Button onPress={sendWSP} 
+                className="animate-aparecer-arriba-1 rounded-lg shadow-md px-6 pt-2 pb-1 text-sm font-semibold hover:bg-green-700/85 bg-green-700 text-white hover:scale-110 transition-all">
                     Whatsapp <RiWhatsappFill className='text-2xl text-fuchsia-50 mb-1 animate-wiggle' />
                 </Button>
-                <Button onPress={onOpen} className="animate-aparecer-arriba-1 delay-1000 rounded-lg shadow-md px-6 pt-2 pb-1 text-sm font-semibold bg-primario text-white hover:scale-110 transition-all">
+                <Button onPress={onOpen} 
+                className="animate-aparecer-arriba-1 rounded-lg shadow-md px-6 pt-2 pb-1 text-sm font-semibold bg-primario text-white hover:scale-110 transition-all">
                     Asesoría virtual <BiSolidMessageDetail className='text-2xl text-fuchsia-50 mb-1 animate-wiggle' />
                 </Button>
             </div>

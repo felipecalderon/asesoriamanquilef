@@ -5,7 +5,6 @@ import { Ephesis } from 'next/font/google'
 import { DarkMode } from "./darkmode";
 import { useEffect, useState } from "react";
 import { menuItems } from "@/constants/menu";
-import UTM from "@/components/indicadores-economicos";
 import { getIndicadores } from "@/utils/getIndicadores";
 import { indicadoresStore } from "@/store/indicadores";
 import { storePosts } from "@/store/postsStore";
@@ -72,9 +71,6 @@ export default function Header() {
                         </Link>
                     </NavbarMenuItem>
                 ))}
-                <div className="block md:hidden mt-auto mb-16">
-                    <UTM />
-                </div>
             </NavbarMenu>
             {/* <DarkMode /> */}
         </Navbar>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import FloatingButtons from "@/components/formIA";
 import Header from '@/components/header'
 import Script from 'next/script'
 import IndicadoresEc from '@/components/indicadores-economicos'
@@ -30,12 +31,13 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className='bg-gray-50 dark:bg-violet-900 transition-colors min-h-screen pb-6'>
+      <body className='bg-gray-50 dark:bg-violet-900 transition-colors min-h-screen pb-16 sm:pb-6'>
         <Header />
         {children}
-        <div className="hidden md:block max-w-sm mx-auto">
+        <div className="max-w-sm mx-auto">
           <IndicadoresEc />
         </div>
+        <FloatingButtons />
       </body>
     </html>
   )
