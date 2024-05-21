@@ -17,9 +17,11 @@ export default function CalculadoraPension() {
         <div className="pt-6">
             <p className="text-2xl font-semibold text-center">Calculadora de Pensiones</p>
             <p className="text-xs text-center">Ingresa la cantidad de UTM y la calculadora te mostrará la cantidad de dinero que deberás pagar.</p>
-            <div className="flex flex-row gap-3 px-6 items-center py-6 justify-center">
-                <p className="text-xs text-right">Ingresa la cantidad de UTM</p>
-                <Input className="max-w-20" type="number" step={0.1} placeholder="Calcular pensión de alimentos" onChange={calcularMonto} color="secondary" />
+            <div className="flex flex-row gap-3 px-6 items-center pt-6 pb-2 justify-center">
+                <p className="text-xs text-right">Anota la cantidad de UTM</p>
+                <Input className="max-w-24" type="number" step={0.1} placeholder="Ingresar" onChange={calcularMonto} color="secondary" />
+            </div>
+            <div className="flex flex-row gap-3 px-6 items-center pb-6 justify-center">
                 <p className="text-xs text-right">Total a pagar:</p>
                 <p className="font-bold">${total}</p>
             </div>
